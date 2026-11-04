@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#1167a8">
+<title>Kiểm tra giữa học kì 1 - Môn Toán | Lớp 5</title>
+<style>
+:root{
+  --blue:#1769aa;--blue2:#2389c9;--teal:#16a6a1;--yellow:#ffd166;
+  --ink:#203247;--muted:#66788a;--paper:#ffffff;--bg:#f1f7fb;
+  --line:#dce8f0;--green:#168653;--green-bg:#e9f8ef;--red:#c94a4a;--red-bg:#fff0ef;
+  --shadow:0 14px 36px rgba(28,76,112,.12);--radius:20px;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Segoe UI",Arial,sans-serif;color:var(--ink);background:linear-gradient(145deg,#eaf5fc 0%,#f7fbfd 52%,#e8f7f4 100%);min-height:100vh}
+button,input,textarea{font:inherit}
+button{cursor:pointer}
+.hidden{display:none!important}
+.shell{width:min(1080px,calc(100% - 28px));margin:28px auto 48px}
+.panel{background:var(--paper);border:1px solid rgba(210,228,239,.9);border-radius:var(--radius);box-shadow:var(--shadow)}
+.hero{position:relative;overflow:hidden;padding:34px 38px;background:linear-gradient(120deg,#1267a8,#168eaa 68%,#19a79a);color:#fff}
+.hero:before,.hero:after{content:"";position:absolute;border-radius:50%;background:rgba(255,255,255,.09)}
+.hero:before{width:260px;height:260px;right:-55px;top:-130px}.hero:after{width:150px;height:150px;right:150px;bottom:-110px}
+.hero-inner{position:relative;z-index:1;max-width:780px}
+.kicker{display:inline-flex;align-items:center;gap:8px;padding:7px 13px;border-radius:999px;background:rgba(255,255,255,.16);font-size:13px;font-weight:700;letter-spacing:.04em}
+h1{font-size:clamp(27px,4vw,42px);line-height:1.15;margin:17px 0 8px;font-weight:850;letter-spacing:.01em}
+.hero p{margin:0;color:#eaf8ff;font-size:16px}
+.hero-tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}.tag{padding:9px 13px;border-radius:12px;background:rgba(255,255,255,.14);font-weight:700;font-size:14px}
+.start-card{padding:28px 34px;margin-top:18px}
+.section-title{font-size:18px;font-weight:800;margin:0 0 16px;color:#174f79;display:flex;align-items:center;gap:9px}
+.field-label{display:block;font-size:14px;font-weight:750;margin:0 0 8px}
+.text-input{width:100%;border:1.5px solid var(--line);background:#fbfdff;border-radius:12px;padding:14px 15px;outline:none;color:var(--ink);transition:.2s}
+.text-input:focus{border-color:var(--blue2);box-shadow:0 0 0 3px rgba(35,137,201,.12)}
+.option-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:22px 0}
+.toggle{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 15px;border:1px solid var(--line);border-radius:13px;background:#fbfdff;font-size:14px;font-weight:650}
+.toggle input{width:19px;height:19px;accent-color:var(--teal)}
+.instructions{background:#f2f9fd;border:1px solid #dceef7;border-radius:14px;padding:16px 18px;margin-top:18px}
+.instructions strong{color:#1769a3}.instructions ul{margin:9px 0 0;padding-left:20px;color:#506579;line-height:1.7;font-size:14px}
+.button-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+.btn{border:0;border-radius:13px;padding:13px 20px;font-weight:800;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:transform .15s,filter .15s;min-height:48px}
+.btn:hover{transform:translateY(-1px);filter:brightness(1.03)}.btn:disabled{opacity:.48;cursor:not-allowed;transform:none}
+.btn-primary{background:linear-gradient(100deg,var(--blue),var(--teal));color:#fff;box-shadow:0 7px 16px rgba(22,105,170,.2)}
+.btn-secondary{background:#fff;color:#1769a8;border:1.5px solid #b8d7e9}
+.btn-warning{background:var(--yellow);color:#654800}.btn-danger{background:#fff1ef;color:#b84040;border:1px solid #f4c7c3}
+.small-note{font-size:12px;color:var(--muted);margin-top:12px;line-height:1.55}
+/* quiz */
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:16px 20px;margin-bottom:14px}
+.brand{font-weight:850;color:#145a8d}.student-meta{color:var(--muted);font-size:13px;margin-top:4px}
+.timer{padding:10px 14px;border-radius:12px;background:#fff7df;border:1px solid #f6dfa0;font-weight:850;color:#805b00;white-space:nowrap}
+.timer.warn{background:#fff0ed;border-color:#ffc9c1;color:#b83f35}
+.status-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:14px}
+.stat{padding:13px 16px;background:#fff;border:1px solid var(--line);border-radius:14px}.stat-label{font-size:12px;color:var(--muted);font-weight:650}.stat-value{font-size:18px;font-weight:850;color:#185b8c;margin-top:3px}
+.progress-wrap{height:9px;background:#e4eef4;border-radius:99px;overflow:hidden;margin:0 0 18px}.progress-bar{height:100%;width:0;background:linear-gradient(90deg,var(--blue2),var(--teal));transition:width .25s}
+.quiz-card{padding:26px 30px}.question-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}.q-number{font-size:14px;font-weight:850;color:#1769a8;background:#eaf5fc;border-radius:999px;padding:8px 13px}.type-label{font-size:12px;color:#4f7188;background:#f2f7fa;padding:7px 11px;border-radius:999px;font-weight:750}
+.question-title{font-size:20px;line-height:1.55;font-weight:800;margin:0 0 18px;color:#203c54;white-space:pre-line}
+.subitem{border:1px solid #e0ebf2;border-radius:15px;padding:17px;margin:14px 0;background:#fcfeff}.subitem-title{font-size:16px;line-height:1.55;font-weight:750;margin-bottom:12px;white-space:pre-line}
+.options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.option{display:flex;align-items:flex-start;gap:11px;text-align:left;width:100%;padding:13px 14px;border:1.5px solid #dbe7ef;border-radius:12px;background:#fff;color:var(--ink);line-height:1.45;min-height:52px}.option:hover{border-color:#8cc5e3;background:#f5fbff}.option.selected{border-color:var(--blue2);background:#eaf6fd;box-shadow:0 0 0 2px rgba(35,137,201,.08)}.option.correct{border-color:#88d1a7;background:var(--green-bg)}.option.wrong{border-color:#f0aaa4;background:var(--red-bg)}
+.option-letter{flex:0 0 27px;width:27px;height:27px;border-radius:8px;display:grid;place-items:center;background:#edf3f7;color:#1769a8;font-weight:850;font-size:13px}.selected .option-letter{background:var(--blue2);color:#fff}
+.answer-row{display:flex;align-items:center;gap:9px;flex-wrap:wrap}.answer-input{width:min(300px,100%);border:1.5px solid #cddfe9;border-radius:11px;padding:12px 13px;outline:none;background:#fff}.answer-input:focus{border-color:var(--blue2);box-shadow:0 0 0 3px rgba(35,137,201,.1)}.unit{font-weight:750;color:#4b6478}.work-label{display:block;color:#6a7f90;font-size:13px;font-weight:700;margin:14px 0 7px}.work-area{width:100%;min-height:67px;border:1px dashed #b9cedc;border-radius:10px;padding:10px 12px;resize:vertical;background:#fff;outline:none}.work-area:focus{border-color:var(--blue2)}
+.feedback{margin-top:12px;padding:12px 14px;border-radius:11px;font-weight:700;font-size:14px;line-height:1.5}.feedback.good{color:#126d43;background:var(--green-bg)}.feedback.bad{color:#a83b36;background:var(--red-bg)}
+.controls{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-top:20px}.controls-left,.controls-right{display:flex;gap:10px;flex-wrap:wrap}.q-dots{display:flex;gap:6px;flex-wrap:wrap;margin-top:17px}.q-dot{width:31px;height:31px;border-radius:9px;border:1px solid #d6e5ee;background:#fff;color:#60788a;font-size:12px;font-weight:800}.q-dot.active{background:#1769a8;color:white;border-color:#1769a8}.q-dot.checked{background:#e6f7ef;color:#137747;border-color:#9dd9b6}
+/* results */
+.result-hero{text-align:center;padding:30px 26px;background:linear-gradient(125deg,#1769aa,#149e9a);color:#fff;border-radius:var(--radius) var(--radius) 0 0}.result-hero h2{margin:10px 0 5px;font-size:30px}.result-hero p{margin:0;color:#e8fbff}.score-big{font-size:56px;font-weight:900;line-height:1.1;margin:16px 0 5px}.result-body{padding:25px 30px}.result-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.result-tile{background:#f5f9fc;border:1px solid #e1ebf1;border-radius:14px;padding:16px;text-align:center}.result-tile strong{display:block;font-size:25px;color:#1769a8}.result-tile span{font-size:12px;color:var(--muted);font-weight:700}.rank{margin:18px 0;padding:14px;border-radius:13px;background:#fff8e3;border:1px solid #f4dfa2;text-align:center;font-size:17px;font-weight:850;color:#795a0a}.review-card{margin-top:14px;border:1px solid var(--line);border-radius:14px;overflow:hidden}.review-head{padding:13px 16px;background:#f2f8fb;font-weight:850;color:#195a88}.review-content{padding:14px 16px;font-size:14px;line-height:1.65}.review-line{padding:8px 0;border-bottom:1px dashed #e2ebf0}.review-line:last-child{border-bottom:0}.state-good{color:var(--green);font-weight:800}.state-bad{color:var(--red);font-weight:800}
+.footer-note{text-align:center;color:#718698;font-size:12px;margin:16px 0}
+@media(max-width:700px){.shell{width:min(100% - 18px,1080px);margin:10px auto 28px}.hero{padding:27px 22px}.start-card,.quiz-card,.result-body{padding:20px 17px}.option-grid,.options{grid-template-columns:1fr}.status-grid{grid-template-columns:1fr 1fr}.status-grid .stat:last-child{grid-column:1/-1}.topbar{padding:13px 14px}.question-title{font-size:18px}.controls{align-items:stretch}.controls-left,.controls-right{width:100%}.controls .btn{flex:1}.result-grid{grid-template-columns:1fr 1fr}.result-grid .result-tile:last-child{grid-column:1/-1}.score-big{font-size:48px}}
+</style>
+</head>
+<body>
+<main class="shell">
+  <section id="startScreen">
+    <div class="panel hero">
+      <div class="hero-inner">
+        <div class="kicker">📘 BÀI KIỂM TRA • LỚP 5</div>
+        <h1>KIỂM TRA GIỮA HỌC KÌ 1<br>MÔN TOÁN</h1>
+        <p>Ôn luyện kiến thức – Bình tĩnh, tự tin và làm bài thật cẩn thận!</p>
+        <div class="hero-tags"><span class="tag">📚 LỚP 5</span><span class="tag">📝 ĐỀ CHẴN</span><span class="tag">⏱ 40 PHÚT</span><span class="tag">🔟 10 ĐIỂM</span></div>
+      </div>
+    </div>
+    <div class="panel start-card">
+      <h2 class="section-title">👩‍🎓 Thông tin học sinh</h2>
+      <label class="field-label" for="studentName">Họ và tên học sinh <span style="color:#d34b43">*</span></label>
+      <input id="studentName" class="text-input" maxlength="80" placeholder="Nhập họ và tên của em..." autocomplete="name">
+      <div class="option-grid">
+        <label class="toggle"><span>🔀 Xáo trộn thứ tự câu hỏi</span><input type="checkbox" id="shuffleQuestions" checked></label>
+        <label class="toggle"><span>🔤 Xáo trộn đáp án A, B, C, D</span><input type="checkbox" id="shuffleAnswers" checked></label>
+        <label class="toggle"><span>🔔 Bật âm thanh nhẹ</span><input type="checkbox" id="soundOn"></label>
+        <label class="toggle"><span>⏳ Đồng hồ đếm ngược 40 phút</span><input type="checkbox" id="timerOn" checked></label>
+      </div>
+      <div class="instructions">
+        <strong>📌 HƯỚNG DẪN LÀM BÀI</strong>
+        <ul>
+          <li>Đọc kỹ đề bài và các dữ kiện trước khi trả lời.</li>
+          <li>Với câu trắc nghiệm, chọn một đáp án đúng nhất.</li>
+          <li>Với câu điền khuyết, nhập kết quả vào đúng ô tương ứng.</li>
+          <li>Kiểm tra lại đơn vị đo, phân số và số thập phân.</li>
+          <li>Em có thể quay lại câu chưa xác nhận. Sau khi nhấn <b>KIỂM TRA ĐÁP ÁN</b>, câu đó sẽ được khóa.</li>
+          <li>Khi hoàn thành, nhấn <b>NỘP BÀI</b> để xem kết quả.</li>
+        </ul>
+      </div>
+      <div class="button-row">
+        <button class="btn btn-primary" id="startRandom">🎮 BẮT ĐẦU LÀM BÀI</button>
+        <button class="btn btn-secondary" id="startOrdered">📖 LÀM BÀI THEO THỨ TỰ ĐỀ</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="quizScreen" class="hidden">
+    <div class="panel topbar">
+      <div><div class="brand">📘 KIỂM TRA GIỮA HỌC KÌ 1 - MÔN TOÁN</div><div class="student-meta" id="studentMeta"></div></div>
+      <div class="timer" id="timerBox">⏱ 40:00</div>
+    </div>
+    <div class="status-grid">
+      <div class="stat"><div class="stat-label">CÂU HIỆN TẠI</div><div class="stat-value" id="currentStat">1 / 10</div></div>
+      <div class="stat"><div class="stat-label">ĐÃ XÁC NHẬN</div><div class="stat-value" id="doneStat">0 / 10 câu</div></div>
+      <div class="stat"><div class="stat-label">TIẾN ĐỘ</div><div class="stat-value" id="progressStat">0%</div></div>
+    </div>
+    <div class="progress-wrap"><div class="progress-bar" id="progressBar"></div></div>
+    <div class="panel quiz-card">
+      <div class="question-head"><span class="q-number" id="questionNumber">CÂU 1</span><span class="type-label" id="questionType"></span></div>
+      <h2 class="question-title" id="questionTitle"></h2>
+      <div id="questionContent"></div>
+      <div id="questionFeedback"></div>
+      <div class="controls">
+        <div class="controls-left"><button class="btn btn-secondary" id="prevBtn">← QUAY LẠI</button><button class="btn btn-primary" id="checkBtn">✓ KIỂM TRA ĐÁP ÁN</button></div>
+        <div class="controls-right"><button class="btn btn-secondary" id="nextBtn">CÂU TIẾP THEO →</button><button class="btn btn-warning" id="submitBtn">NỘP BÀI</button></div>
+      </div>
+      <div class="q-dots" id="questionDots" aria-label="Điều hướng câu hỏi"></div>
+    </div>
+    <p class="footer-note">Mỗi câu hỏi gốc tối đa 1 điểm. Các ý nhỏ được chấm độc lập theo thang điểm tham khảo.</p>
+  </section>
+
+  <section id="resultScreen" class="hidden">
+    <div class="panel" style="overflow:hidden">
+      <div class="result-hero"><div style="font-size:42px">🏁</div><h2>KẾT QUẢ BÀI LÀM</h2><p id="resultStudent"></p><div class="score-big" id="scoreBig">0,0 / 10</div><div>ĐIỂM TỔNG KẾT</div></div>
+      <div class="result-body">
+        <div class="result-grid">
+          <div class="result-tile"><strong id="doneQuestions">0/10</strong><span>CÂU ĐÃ LÀM</span></div>
+          <div class="result-tile"><strong id="correctCount">0/21</strong><span>Ý / KẾT QUẢ ĐÚNG</span></div>
+          <div class="result-tile"><strong id="wrongCount">21</strong><span>Ý SAI HOẶC BỎ TRỐNG</span></div>
+          <div class="result-tile"><strong id="percentCorrect">0%</strong><span>TỶ LỆ TRẢ LỜI ĐÚNG</span></div>
+          <div class="result-tile"><strong id="usedTime">—</strong><span>THỜI GIAN ĐÃ DÙNG</span></div>
+          <div class="result-tile"><strong>10 điểm</strong><span>ĐIỂM TỐI ĐA</span></div>
+        </div>
+        <div class="rank" id="rankTitle"></div>
+        <div class="button-row"><button class="btn btn-primary" id="showAllReview">📖 XEM LẠI ĐÁP ÁN</button><button class="btn btn-secondary" id="showWrongReview">🔎 XEM CÂU TRẢ LỜI SAI</button><button class="btn btn-warning" id="restartBtn">↻ LÀM BÀI MỚI</button></div>
+        <div id="reviewArea"></div>
+        <p class="small-note">Kết quả được chấm theo đáp án tham chiếu và quy ước điểm của trò chơi. Giáo viên có thể đối chiếu lại với đáp án chính thức (nếu có) trước khi sử dụng kết quả cho mục đích đánh giá.</p>
+      </div>
+    </div>
+  </section>
+</main>
+<script>
+'use strict';
+
+// Dữ liệu đề chẵn: chỉ sử dụng các câu có trong PDF được cung cấp.
+const QUESTION_BANK = [
+ {id:1,title:'Câu 1',type:'Trắc nghiệm – Chọn đáp án đúng nhất',items:[
+   {id:'1a',label:'a)',prompt:'Kết quả của phép tính 3 600 : 90 là:',kind:'mcq',options:[['A','4'],['B','3 600'],['C','400'],['D','40']],correct:'D',answerText:'D. 40',weight:.5},
+   {id:'1b',label:'b)',prompt:'Giá trị của biểu thức 240 × 25 × 4 là:',kind:'mcq',options:[['A','2 400'],['B','24 000'],['C','6 000'],['D','240 000']],correct:'B',answerText:'B. 24 000',weight:.5}
+ ]},
+ {id:2,title:'Câu 2',type:'Trắc nghiệm – Chọn đáp án đúng nhất',items:[
+   {id:'2a',label:'a)',prompt:'Số thập phân gồm: 3 chục, 2 đơn vị, 8 phần trăm, 9 phần nghìn là:',kind:'mcq',options:[['A','89,23'],['B','238,9'],['C','32,089'],['D','32,89']],correct:'C',answerText:'C. 32,089',weight:.5},
+   {id:'2b',label:'b)',prompt:'Chữ số 9 trong số thập phân 305,978 có giá trị là:',kind:'mcq',options:[['A','90'],['B','9/100'],['C','9'],['D','9/10']],correct:'D',answerText:'D. 9/10',weight:.5}
+ ]},
+ {id:3,title:'Câu 3. Tính',type:'Điền khuyết – Nhập kết quả',items:[
+   {id:'3a',label:'a)',prompt:'2/5 + 6/7 =',kind:'fill',answers:['44/35'],answerText:'44/35 hoặc 1 9/35',unit:'',weight:.5,work:true},
+   {id:'3b',label:'b)',prompt:'5/8 − 2/9 =',kind:'fill',answers:['29/72'],answerText:'29/72',unit:'',weight:.5,work:true}
+ ]},
+ {id:4,title:'Câu 4',type:'Trắc nghiệm – Chọn đáp án đúng nhất',items:[
+   {id:'4a',label:'a)',prompt:'Làm tròn 35,56 đến số tự nhiên gần nhất được kết quả là:',kind:'mcq',options:[['A','35,6'],['B','36'],['C','35'],['D','35,5']],correct:'B',answerText:'B. 36',weight:.5},
+   {id:'4b',label:'b)',prompt:'Làm tròn 7,645 đến hàng phần mười được kết quả là:',kind:'mcq',options:[['A','7,6'],['B','7,7'],['C','7,65'],['D','8,0']],correct:'A',answerText:'A. 7,6',weight:.5}
+ ]},
+ {id:5,title:'Câu 5. Tính giá trị của biểu thức:',type:'Điền khuyết – Nhập kết quả',items:[
+   {id:'5a',label:'a)',prompt:'4 × 7/4 + 5/3 =',kind:'fill',answers:['26/3'],answerText:'26/3 hoặc 8 2/3',unit:'',weight:.5,work:true},
+   {id:'5b',label:'b)',prompt:'3 − 3/4 : 5/4 =',kind:'fill',answers:['12/5'],answerText:'12/5 hoặc 2 2/5',unit:'',weight:.5,work:true}
+ ]},
+ {id:6,title:'Câu 6',type:'Trắc nghiệm – Chọn đáp án đúng nhất',items:[
+   {id:'6a',label:'a)',prompt:'Diện tích tỉnh Phú Thọ khoảng:',kind:'mcq',options:[['A','9361 km²'],['B','9361 ha'],['C','9361 m²'],['D','9361 dm²']],correct:'A',answerText:'A. 9361 km²',weight:.5},
+   {id:'6b',label:'b)',prompt:'Một gia đình có khu đất rộng 2 ha. Gia đình sử dụng 12 000 m² để trồng cây ăn quả, phần còn lại để trồng rau. Diện tích đất trồng rau là:',kind:'mcq',options:[['A','10 000 m²'],['B','8 000 m²'],['C','12 000 m²'],['D','20 000 m²']],correct:'B',answerText:'B. 8 000 m²',weight:.5}
+ ]},
+ {id:7,title:'Câu 7',type:'Điền khuyết – Nhập kết quả',description:'Mai đang gấp con hạc giấy để làm một “lọ ước”. Mục tiêu của Mai là phải gấp được 150 con hạc giấy. Biết rằng, bạn ấy đã gấp được số hạc giấy bằng 2/5 mục tiêu đã đề ra. Tính số hạc giấy mà Mai cần gấp thêm để đạt được mục tiêu.',items:[
+   {id:'7a',label:'Đáp số',prompt:'Số hạc giấy Mai cần gấp thêm:',kind:'fill',answers:['90'],answerText:'90 con hạc giấy',unit:'con hạc giấy',weight:1,work:true}
+ ]},
+ {id:8,title:'Câu 8',type:'Điền khuyết – Nhập kết quả',description:'Bốn cây cầu bắc qua sông Hồng có chiều dài là: 3,90 km; 2,290 km; 3,084 km và 3,250 km. Biết rằng cầu Nhật Tân dài nhất, cầu Long Biên ngắn nhất và cầu Thăng Long dài hơn cầu Thanh Trì. Hãy cho biết chiều dài tương ứng của mỗi cây cầu.',items:[
+   {id:'8longbien',label:'Cầu Long Biên',prompt:'Chiều dài cầu Long Biên:',kind:'fill',answers:['2.290'],answerText:'2,290 km',unit:'km',weight:.25},
+   {id:'8nhattan',label:'Cầu Nhật Tân',prompt:'Chiều dài cầu Nhật Tân:',kind:'fill',answers:['3.90'],answerText:'3,90 km',unit:'km',weight:.25},
+   {id:'8thanhtri',label:'Cầu Thanh Trì',prompt:'Chiều dài cầu Thanh Trì:',kind:'fill',answers:['3.084'],answerText:'3,084 km',unit:'km',weight:.25},
+   {id:'8thanglong',label:'Cầu Thăng Long',prompt:'Chiều dài cầu Thăng Long:',kind:'fill',answers:['3.250'],answerText:'3,250 km',unit:'km',weight:.25}
+ ]},
+ {id:9,title:'Câu 9',type:'Điền khuyết – Nhập kết quả',description:'Trong chiến dịch phủ xanh đồi trọc, bản của bạn A Páo trồng được 9 360 cây bạch đàn và cây keo. Số cây bạch đàn trồng được nhiều hơn số cây keo là 840 cây.\n\na) Tính số cây mỗi loại đã trồng được.\n\nb) Biết rằng cứ 10 m² đồi trọc trồng được 2 cây. Bản của A Páo dự định phủ xanh một khu đồi có diện tích 50 000 m². Hỏi sau khi trồng hết số cây đã chuẩn bị, bản của A Páo còn phải trồng thêm bao nhiêu cây để phủ xanh toàn bộ khu đồi đó?',items:[
+   {id:'9bachdan',label:'Số cây bạch đàn',prompt:'Số cây bạch đàn đã trồng:',kind:'fill',answers:['5100'],answerText:'5 100 cây',unit:'cây',weight:1/3},
+   {id:'9keo',label:'Số cây keo',prompt:'Số cây keo đã trồng:',kind:'fill',answers:['4260'],answerText:'4 260 cây',unit:'cây',weight:1/3},
+   {id:'9them',label:'Số cây cần trồng thêm',prompt:'Số cây cần trồng thêm:',kind:'fill',answers:['640'],answerText:'640 cây',unit:'cây',weight:1/3}
+ ]},
+ {id:10,title:'Câu 10',type:'Điền khuyết – Nhập kết quả',description:'Một khu đất hình chữ nhật có chiều dài 800 m, chiều rộng 500 m. Người ta dành 6 ha đất để đào ao, phần diện tích còn lại dùng để trồng trọt. Trong diện tích đất dùng để trồng trọt, người ta dành 1/4 diện tích để trồng ngô, phần còn lại trồng rau. Biết rằng trung bình mỗi héc-ta đất trồng ngô thu hoạch được 6 tấn ngô. Hỏi trên khu đất đó thu hoạch được bao nhiêu tấn ngô?',items:[
+   {id:'10a',label:'Đáp số',prompt:'Sản lượng ngô thu hoạch được:',kind:'fill',answers:['51'],answerText:'51 tấn ngô',unit:'tấn ngô',weight:1,work:true}
+ ]}
+];
+
+const $ = id => document.getElementById(id);
+let state = {name:'',order:[],index:0,answers:{},checked:{},results:{},optionOrders:{},timerEnabled:true,secondsLeft:2400,startedAt:0,endedAt:0,finished:false,sound:false,timerHandle:null,shuffledAnswers:true};
+const clone = obj => JSON.parse(JSON.stringify(obj));
+function shuffle(arr){const a=[...arr];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+function getQ(){return QUESTION_BANK.find(q=>q.id===state.order[state.index]);}
+function getItemState(id){if(!state.answers[id])state.answers[id]={value:'',work:''};return state.answers[id];}
+function beep(freq=660,duration=.08){if(!state.sound)return;try{const C=window.AudioContext||window.webkitAudioContext;if(!C)return;const ctx=new C();const o=ctx.createOscillator(),g=ctx.createGain();o.frequency.value=freq;o.connect(g);g.connect(ctx.destination);g.gain.setValueAtTime(.05,ctx.currentTime);g.gain.exponentialRampToValueAtTime(.001,ctx.currentTime+duration);o.start();o.stop(ctx.currentTime+duration);o.onended=()=>ctx.close();}catch(e){}}
+function startQuiz(ordered){
+ const name=$('studentName').value.trim();if(!name){alert('Em hãy nhập họ và tên trước khi bắt đầu nhé!');$('studentName').focus();return;}
+ if(state.timerHandle)clearInterval(state.timerHandle);
+ state={name,order:ordered?QUESTION_BANK.map(q=>q.id):($('shuffleQuestions').checked?shuffle(QUESTION_BANK.map(q=>q.id)):QUESTION_BANK.map(q=>q.id)),index:0,answers:{},checked:{},results:{},optionOrders:{},timerEnabled:$('timerOn').checked,secondsLeft:2400,startedAt:Date.now(),endedAt:0,finished:false,sound:$('soundOn').checked,timerHandle:null,shuffledAnswers:$('shuffleAnswers').checked};
+ $('startScreen').classList.add('hidden');$('resultScreen').classList.add('hidden');$('quizScreen').classList.remove('hidden');$('studentMeta').textContent=`Học sinh: ${name} · Lớp 5 · Đề chẵn`;
+ if(state.timerEnabled){$('timerBox').classList.remove('hidden');updateTimer();state.timerHandle=setInterval(()=>{if(state.finished)return;state.secondsLeft--;updateTimer();if(state.secondsLeft<=0){finishQuiz(true);}},1000);}else{$('timerBox').classList.add('hidden');}
+ renderQuestion();window.scrollTo({top:0,behavior:'smooth'});
+}
+function updateTimer(){const m=Math.floor(state.secondsLeft/60),s=state.secondsLeft%60;$('timerBox').textContent=`⏱ ${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;$('timerBox').classList.toggle('warn',state.secondsLeft<=300);}
+function escapeHtml(str){return String(str).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function renderQuestion(){
+ if(state.finished)return;const q=getQ();$('currentStat').textContent=`${state.index+1} / 10`;$('questionNumber').textContent=q.title.toUpperCase();$('questionType').textContent=q.type;
+ $('questionTitle').textContent=q.description||'';$('questionTitle').classList.toggle('hidden',!q.description);
+ const wrap=$('questionContent');wrap.innerHTML='';
+ q.items.forEach(item=>{
+   const saved=getItemState(item.id);const locked=!!state.checked[q.id];const sub=document.createElement('div');sub.className='subitem';
+   const head=document.createElement('div');head.className='subitem-title';head.textContent=(item.label?item.label+' ':'')+item.prompt;sub.appendChild(head);
+   if(item.kind==='mcq'){
+     const optWrap=document.createElement('div');optWrap.className='options';let opts=item.options.map(o=>({id:o[0],text:o[1]}));if(!state.optionOrders[item.id])state.optionOrders[item.id]=(state.shuffledAnswers?shuffle(opts):opts).map(o=>o.id);opts=state.optionOrders[item.id].map(id=>{const found=item.options.find(o=>o[0]===id);return {id:found[0],text:found[1]};});
+     opts.forEach((o,i)=>{const b=document.createElement('button');b.type='button';b.className='option'+(saved.value===o.id?' selected':'');b.disabled=locked;b.innerHTML=`<span class="option-letter">${String.fromCharCode(65+i)}</span><span>${escapeHtml(o.text)}</span>`;b.dataset.item=item.id;b.dataset.option=o.id;b.addEventListener('click',()=>{if(state.checked[q.id])return;getItemState(item.id).value=o.id;renderQuestion();});optWrap.appendChild(b);});sub.appendChild(optWrap);
+   }else{
+     const row=document.createElement('div');row.className='answer-row';const input=document.createElement('input');input.className='answer-input';input.type='text';input.autocomplete='off';input.placeholder='Nhập đáp số...';input.value=saved.value;input.disabled=locked;input.setAttribute('aria-label',item.label||item.prompt);input.addEventListener('input',e=>{getItemState(item.id).value=e.target.value;});row.appendChild(input);if(item.unit){const u=document.createElement('span');u.className='unit';u.textContent=item.unit;row.appendChild(u);}sub.appendChild(row);
+     if(item.work){const lab=document.createElement('label');lab.className='work-label';lab.textContent='Trình bày cách làm (không chấm tự động):';sub.appendChild(lab);const ta=document.createElement('textarea');ta.className='work-area';ta.placeholder='Em có thể trình bày cách giải ở đây...';ta.value=saved.work;ta.disabled=locked;ta.addEventListener('input',e=>{getItemState(item.id).work=e.target.value;});sub.appendChild(ta);}
+   }
+   if(locked){const r=state.results[item.id];const fb=document.createElement('div');fb.className='feedback '+(r&&r.correct?'good':'bad');fb.textContent=(r&&r.correct?'✓ Chính xác! ':'✗ Chưa chính xác. ')+`Đáp án tham chiếu: ${getItemAnswerText(item)}.`;sub.appendChild(fb);}
+   wrap.appendChild(sub);
+ });
+ $('questionFeedback').innerHTML='';if(state.checked[q.id]){$('questionFeedback').innerHTML='<div class="feedback good">Câu này đã được xác nhận và khóa. Em có thể xem lại đáp án nhưng không thể sửa câu trả lời.</div>';}
+ $('prevBtn').disabled=state.index===0;$('nextBtn').disabled=state.index===state.order.length-1;$('checkBtn').disabled=!!state.checked[q.id];$('checkBtn').textContent=state.checked[q.id]?'✓ ĐÃ XÁC NHẬN':'✓ KIỂM TRA ĐÁP ÁN';
+ updateProgress();renderDots();
+}
+function updateProgress(){const count=Object.keys(state.checked).length,p=Math.round(count/10*100);$('doneStat').textContent=`${count} / 10 câu`;$('progressStat').textContent=p+'%';$('progressBar').style.width=p+'%';}
+function renderDots(){const wrap=$('questionDots');wrap.innerHTML='';state.order.forEach((id,i)=>{const b=document.createElement('button');b.className='q-dot'+(i===state.index?' active':'')+(state.checked[id]?' checked':'');b.textContent=id;b.title='Đi đến Câu '+id;b.addEventListener('click',()=>{state.index=i;renderQuestion();});wrap.appendChild(b);});}
+function parseRational(raw){
+ let s=String(raw??'').trim().replace(/[−–]/g,'-').replace(/\u00a0/g,' ');if(!s)return null;
+ // Remove common units if a student typed them although units are printed beside the field.
+ s=s.replace(/\s*(km²|km2|m²|m2|dm²|dm2|ha|tấn(?:\s+ngô)?|con\s+hạc\s+giấy|cây)\s*$/i,'').trim();
+ // Remove spaces used as thousands separators; keep one between whole and fractional parts of a mixed number.
+ let m=s.match(/^([+-]?\d+)\s+(\d+)\s*\/\s*(\d+)$/);
+ if(m){let whole=BigInt(m[1]),num=BigInt(m[2]),den=BigInt(m[3]);if(den===0n)return null;let sign=whole<0n?-1n:1n;let n=whole*den+sign*num;return reduce(n,den);}
+ s=s.replace(/\s+/g,'');
+ const frac=s.match(/^([+-]?\d+)\/([+-]?\d+)$/);if(frac){let n=BigInt(frac[1]),d=BigInt(frac[2]);if(d===0n)return null;return reduce(n,d);}
+ // Exact decimal parser: comma or dot is the decimal separator.
+ const dec=s.match(/^([+-]?)(\d+)(?:[.,](\d+))?$/);if(dec){const sign=dec[1]==='-'?-1n:1n;const decimals=dec[3]||'';const den=10n**BigInt(decimals.length);const whole=BigInt(dec[2]);const tail=decimals?BigInt(decimals):0n;return reduce(sign*(whole*den+tail),den);}
+ return null;
+}
+function gcd(a,b){a=a<0n?-a:a;b=b<0n?-b:b;while(b){const t=a%b;a=b;b=t;}return a||1n;}
+function reduce(n,d){if(d<0n){n=-n;d=-d;}const g=gcd(n,d);return {n:n/g,d:d/g};}
+function rationalEqual(a,b){return !!a&&!!b&&a.n===b.n&&a.d===b.d;}
+function isItemCorrect(item,value){if(item.kind==='mcq')return value===item.correct;const parsed=parseRational(value);if(!parsed)return false;return item.answers.some(ans=>rationalEqual(parsed,parseRational(ans)));}
+function getItemAnswerText(item){if(item.kind!=='mcq')return item.answerText;const order=state.optionOrders[item.id]||item.options.map(o=>o[0]);const pos=order.indexOf(item.correct);const letter=pos>=0?String.fromCharCode(65+pos):item.correct;const opt=item.options.find(o=>o[0]===item.correct);return `${letter}. ${opt?opt[1]:item.answerText}`;}
+function checkCurrent(){const q=getQ();if(state.checked[q.id])return;let allCorrect=true;const newResults={};q.items.forEach(item=>{const val=getItemState(item.id).value;const correct=isItemCorrect(item,val);newResults[item.id]={correct,student:val};if(!correct)allCorrect=false;});Object.assign(state.results,newResults);state.checked[q.id]=true;beep(allCorrect?800:260,.12);renderQuestion();$('questionFeedback').innerHTML=`<div class="feedback ${allCorrect?'good':'bad'}">${allCorrect?'✓ CHÍNH XÁC! BẠN GIỎI LẮM!':'✗ CHƯA CHÍNH XÁC! HÃY CỐ GẮNG NHÉ!'} ${allCorrect?'Tất cả ý trong câu này đều đúng.':'Em hãy xem đáp án tham chiếu ở từng ý để rút kinh nghiệm.'}</div>`;}
+function goNext(){if(state.index<state.order.length-1){state.index++;renderQuestion();window.scrollTo({top:0,behavior:'smooth'});}}
+function goPrev(){if(state.index>0){state.index--;renderQuestion();window.scrollTo({top:0,behavior:'smooth'});}}
+function countAttemptedQuestions(){return QUESTION_BANK.filter(q=>q.items.some(it=>String((state.answers[it.id]||{}).value||'').trim()!=='' )).length;}
+function scoreAll(){let correctCount=0,score=0;QUESTION_BANK.forEach(q=>q.items.forEach(item=>{const val=(state.answers[item.id]||{}).value||'';const correct=isItemCorrect(item,val);if(correct){correctCount++;score+=item.weight;}state.results[item.id]={correct,student:val};}));return {correctCount,score};}
+function finishQuiz(timeout=false){if(state.finished)return;const unanswered=QUESTION_BANK.filter(q=>!q.items.every(it=>String((state.answers[it.id]||{}).value||'').trim()!==''));if(!timeout&&unanswered.length){const ok=confirm(`Còn ${unanswered.length} câu có ít nhất một ô chưa nhập. Em có chắc chắn muốn nộp bài không? Các ô bỏ trống sẽ được tính 0 điểm.`);if(!ok)return;}
+ state.finished=true;state.endedAt=Date.now();if(state.timerHandle)clearInterval(state.timerHandle);const {correctCount,score}=scoreAll();const rounded=Math.round((score+Number.EPSILON)*10)/10;const percent=Math.round(correctCount/21*100);const used=Math.max(0,Math.floor((state.endedAt-state.startedAt)/1000));
+ $('quizScreen').classList.add('hidden');$('resultScreen').classList.remove('hidden');$('resultStudent').textContent=`Học sinh: ${state.name} · Lớp 5 · Đề chẵn${timeout?' · Đã tự động nộp bài khi hết giờ':''}`;$('scoreBig').textContent=rounded.toFixed(1).replace('.',',')+' / 10';$('doneQuestions').textContent=`${countAttemptedQuestions()}/10`;$('correctCount').textContent=`${correctCount}/21`;$('wrongCount').textContent=String(21-correctCount);$('percentCorrect').textContent=percent+'%';$('usedTime').textContent=state.timerEnabled?`${String(Math.floor(used/60)).padStart(2,'0')}:${String(used%60).padStart(2,'0')}`:'Không giới hạn';
+ let rank=rounded>=9?'👑 NHÀ TOÁN HỌC XUẤT SẮC':rounded>=8?'🏆 CAO THỦ TOÁN HỌC':rounded>=7?'🌟 NGÔI SAO TOÁN HỌC':rounded>=5?'⭐ CHIẾN BINH TOÁN HỌC':'💪 CÙNG CỐ GẮNG NHÉ!';$('rankTitle').textContent=rank;
+ renderReview(false);window.scrollTo({top:0,behavior:'smooth'});beep(880,.18);
+}
+function renderReview(onlyWrong){const area=$('reviewArea');area.innerHTML='';QUESTION_BANK.forEach(q=>{const items=q.items.filter(item=>!onlyWrong||!state.results[item.id]?.correct);if(!items.length)return;const card=document.createElement('div');card.className='review-card';const h=document.createElement('div');h.className='review-head';h.textContent=q.title;card.appendChild(h);const content=document.createElement('div');content.className='review-content';if(q.description){const d=document.createElement('div');d.style.whiteSpace='pre-line';d.style.marginBottom='10px';d.textContent=q.description;content.appendChild(d);}items.forEach(item=>{const r=state.results[item.id]||{correct:false,student:''};const line=document.createElement('div');line.className='review-line';const student=item.kind==='mcq'?(item.options.find(o=>o[0]===r.student)?.[1]||'Chưa trả lời'):(String(r.student||'').trim()||'Chưa trả lời');line.innerHTML=`<div><b>${escapeHtml(item.label||'')}</b> ${escapeHtml(item.prompt)}</div><div>Em trả lời: <b>${escapeHtml(student)}</b> — <span class="${r.correct?'state-good':'state-bad'}">${r.correct?'ĐÚNG':'CHƯA ĐÚNG / BỎ TRỐNG'}</span></div><div>Đáp án tham chiếu: <b>${escapeHtml(getItemAnswerText(item))}</b></div><div style="color:#657b8d;font-size:12px">Điểm ý này: ${r.correct?item.weight.toFixed(3).replace(/0+$/,'').replace(/\.$/,''):'0'} / ${item.weight.toFixed(3).replace(/0+$/,'').replace(/\.$/,'')}</div>`;content.appendChild(line);});card.appendChild(content);area.appendChild(card);});if(!area.children.length){area.innerHTML='<div class="feedback good" style="margin-top:18px">🎉 Không có câu trả lời sai. Em đã làm đúng tất cả các ý!</div>';}}
+
+$('startRandom').addEventListener('click',()=>startQuiz(false));$('startOrdered').addEventListener('click',()=>startQuiz(true));$('checkBtn').addEventListener('click',checkCurrent);$('prevBtn').addEventListener('click',goPrev);$('nextBtn').addEventListener('click',goNext);$('submitBtn').addEventListener('click',()=>finishQuiz(false));$('showAllReview').addEventListener('click',()=>renderReview(false));$('showWrongReview').addEventListener('click',()=>renderReview(true));$('restartBtn').addEventListener('click',()=>{if(state.timerHandle)clearInterval(state.timerHandle);state.finished=true;$('resultScreen').classList.add('hidden');$('quizScreen').classList.add('hidden');$('startScreen').classList.remove('hidden');$('studentName').value='';window.scrollTo({top:0,behavior:'smooth'});});
+// Prevent accidental browser navigation during an active timed test; no answer data is uploaded.
+window.addEventListener('beforeunload',e=>{if(!state.finished&&state.startedAt){e.preventDefault();e.returnValue='Bài làm của em chưa được nộp.';}});
+</script>
+</body>
+</html>
