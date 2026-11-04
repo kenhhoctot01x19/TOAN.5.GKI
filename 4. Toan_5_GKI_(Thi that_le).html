@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Trò chơi kiểm tra giữa học kì I môn Toán lớp 5 - đề lẻ, 10 câu từ tài liệu PDF được cung cấp.">
+<title>Kiểm tra giữa học kì 1 - Môn Toán | Lớp 5</title>
+<style>
+  :root {
+    --navy:#153b65;
+    --blue:#2476c8;
+    --blue-soft:#eaf4ff;
+    --teal:#159b91;
+    --teal-soft:#e9f8f5;
+    --gold:#f2bd4b;
+    --ink:#203247;
+    --muted:#65778b;
+    --line:#dce6ef;
+    --paper:#ffffff;
+    --bg:#f2f7fb;
+    --green:#16834b;
+    --green-soft:#e8f7ed;
+    --red:#c64d4d;
+    --red-soft:#fff0ef;
+    --shadow:0 14px 38px rgba(25,58,91,.10);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:linear-gradient(180deg,#eef6fc 0%,#f8fbfd 58%,#f3f8fb 100%);color:var(--ink);font-family:"Segoe UI",Arial,sans-serif;line-height:1.55}
+  button,input,textarea{font:inherit}
+  button{cursor:pointer}
+  .screen{display:none;min-height:100vh;padding:28px 16px 40px}
+  .screen.active{display:block}
+  .container{width:min(1020px,100%);margin:0 auto}
+  .panel{background:var(--paper);border:1px solid rgba(213,226,238,.9);border-radius:24px;box-shadow:var(--shadow)}
+  .start-wrap{max-width:820px;margin:2vh auto 0;overflow:hidden}
+  .hero{position:relative;padding:36px 34px 30px;text-align:center;color:#fff;background:linear-gradient(125deg,#15558f 0%,#247ac5 54%,#159b91 100%);overflow:hidden}
+  .hero:before,.hero:after{content:"";position:absolute;border-radius:50%;background:rgba(255,255,255,.09);pointer-events:none}
+  .hero:before{width:250px;height:250px;right:-70px;top:-120px}
+  .hero:after{width:180px;height:180px;left:-70px;bottom:-110px}
+  .hero-mark{position:relative;z-index:1;display:inline-flex;width:68px;height:68px;align-items:center;justify-content:center;margin-bottom:12px;border-radius:20px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);font-size:34px}
+  .hero h1{position:relative;z-index:1;margin:0 auto 7px;max-width:700px;font-size:clamp(24px,4vw,36px);line-height:1.2;letter-spacing:.2px}
+  .hero .subtitle{position:relative;z-index:1;margin:0;font-size:17px;font-weight:700;letter-spacing:1.2px;color:#e8f5ff}
+  .hero .grade-pill{position:relative;z-index:1;display:inline-block;margin-top:16px;padding:5px 16px;border-radius:999px;background:#fff;color:var(--navy);font-size:13px;font-weight:800}
+  .start-content{padding:28px 34px 34px}
+  .section-kicker{margin:0 0 12px;color:var(--navy);font-size:15px;font-weight:800;letter-spacing:.3px}
+  .meta-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:22px}
+  .meta-card{padding:13px 15px;background:#f5f9fc;border:1px solid var(--line);border-radius:14px}
+  .meta-card span{display:block;color:var(--muted);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.5px}
+  .meta-card strong{display:block;margin-top:3px;color:var(--navy);font-size:17px}
+  .field-label{display:block;margin:0 0 7px;font-size:14px;font-weight:800;color:#334b63}
+  .text-input{width:100%;min-height:48px;padding:11px 14px;border:1.5px solid #cbd9e6;border-radius:12px;background:#fff;color:var(--ink);outline:none;transition:border-color .18s,box-shadow .18s}
+  .text-input:focus,.work-input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(36,118,200,.12)}
+  .help-list{margin:20px 0 22px;padding:16px 18px;background:var(--blue-soft);border-radius:15px;border:1px solid #d7e9fa}
+  .help-list h3{margin:0 0 7px;color:var(--navy);font-size:15px}
+  .help-list ul{margin:0;padding-left:20px;color:#435d77;font-size:14px}
+  .help-list li{margin:4px 0}
+  .settings{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0 22px}
+  .setting{display:flex;align-items:center;gap:10px;padding:11px 13px;border:1px solid var(--line);border-radius:12px;background:#fbfdff;font-size:14px;color:#3e5369}
+  .setting input{width:18px;height:18px;accent-color:var(--blue)}
+  .source-note{margin:0 0 20px;padding:12px 14px;border-left:4px solid var(--gold);border-radius:8px;background:#fff9e9;color:#6d5726;font-size:13px}
+  .actions{display:flex;flex-wrap:wrap;gap:12px}
+  .btn{border:0;border-radius:12px;padding:12px 20px;min-height:46px;font-weight:800;letter-spacing:.15px;transition:transform .16s,filter .16s,box-shadow .16s}
+  .btn:hover{filter:brightness(1.03);transform:translateY(-1px)}
+  .btn:active{transform:translateY(0)}
+  .btn:disabled{opacity:.45;cursor:not-allowed;transform:none;filter:none}
+  .btn-primary{background:linear-gradient(110deg,var(--blue),#1764aa);color:#fff;box-shadow:0 7px 16px rgba(36,118,200,.2)}
+  .btn-secondary{background:var(--teal-soft);color:#08776f;border:1px solid #c7e9e4}
+  .btn-quiet{background:#edf2f6;color:#40576e;border:1px solid #dce5ec}
+  .btn-danger{background:#fff0ef;color:#a63b3b;border:1px solid #f3d1ce}
+  .small-note{margin:13px 0 0;color:#7a8a9a;font-size:12px;text-align:center}
+
+  /* Test view */
+  .game-shell{max-width:1040px;margin:0 auto}
+  .game-top{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 18px;margin-bottom:14px}
+  .brand{display:flex;align-items:center;gap:11px;min-width:0}
+  .brand-icon{width:42px;height:42px;display:grid;place-items:center;border-radius:13px;background:var(--blue-soft);font-size:22px;flex:0 0 auto}
+  .brand-title{min-width:0}
+  .brand-title strong{display:block;color:var(--navy);font-size:15px;line-height:1.25}
+  .brand-title span{display:block;color:var(--muted);font-size:12px;margin-top:2px}
+  .top-stats{display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+  .stat-pill{padding:8px 12px;border:1px solid var(--line);border-radius:12px;background:#fbfdff;color:#40566c;font-size:13px;font-weight:700;white-space:nowrap}
+  .stat-pill strong{color:var(--navy)}
+  .timer-pill{background:#fff8e8;border-color:#f1dfb5;color:#805b11}
+  .timer-pill.urgent{background:var(--red-soft);border-color:#f0c5c1;color:#a63c3c;animation:pulse 1s infinite}
+  @keyframes pulse{50%{opacity:.72}}
+  .progress-panel{padding:15px 19px;margin-bottom:14px}
+  .progress-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:9px;font-size:13px;color:var(--muted);font-weight:700}
+  .progress-track{height:9px;background:#e9f0f6;border-radius:999px;overflow:hidden}
+  .progress-fill{height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--teal));border-radius:999px;transition:width .25s}
+  .question-card{padding:26px 28px 24px;min-height:390px}
+  .question-heading{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:17px}
+  .question-number{display:flex;align-items:center;gap:10px;color:var(--navy);font-size:20px;font-weight:900}
+  .number-bubble{display:grid;place-items:center;width:38px;height:38px;background:var(--blue-soft);border-radius:12px;color:var(--blue);font-size:16px}
+  .type-pill{padding:6px 11px;border-radius:999px;background:var(--teal-soft);color:#08766e;font-size:12px;font-weight:800;white-space:nowrap}
+  .question-content{font-size:17px;line-height:1.7;color:#263d54}
+  .question-content p{margin:0 0 12px}
+  .question-content strong{color:#183e65}
+  .subquestion{margin:16px 0 9px;padding-top:13px;border-top:1px solid #edf1f5}
+  .subquestion:first-child{margin-top:0;padding-top:0;border-top:0}
+  .sub-label{font-weight:800;color:#31516f;margin-right:6px}
+  .fraction{display:inline-flex;vertical-align:middle;flex-direction:column;align-items:center;line-height:1.05;margin:0 3px;min-width:18px;font-size:.92em}
+  .fraction .top{padding:0 3px 2px;border-bottom:1.4px solid currentColor}
+  .fraction .bottom{padding:2px 3px 0}
+  .choice-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin:12px 0 16px}
+  .choice{display:flex;align-items:flex-start;gap:12px;width:100%;min-height:54px;padding:12px 14px;text-align:left;border:1.5px solid #d9e4ee;border-radius:13px;background:#fbfdff;color:#314960;transition:border-color .15s,background .15s,transform .15s}
+  .choice:hover{border-color:#8bb9e3;background:#f4f9ff}
+  .choice.selected{border-color:var(--blue);background:#eaf4ff;box-shadow:0 0 0 2px rgba(36,118,200,.08)}
+  .choice.correct{border-color:#8bd1a4;background:var(--green-soft)}
+  .choice.incorrect{border-color:#edb0aa;background:var(--red-soft)}
+  .choice-letter{display:grid;place-items:center;flex:0 0 27px;height:27px;border-radius:8px;background:#eaf0f5;color:#425b73;font-weight:900;font-size:13px}
+  .choice.selected .choice-letter{background:var(--blue);color:#fff}
+  .choice.correct .choice-letter{background:var(--green);color:#fff}
+  .choice.incorrect .choice-letter{background:var(--red);color:#fff}
+  .choice-text{padding-top:2px;font-size:16px;font-weight:600}
+  .answer-field{margin:12px 0 16px;padding:15px;background:#f7fafc;border:1px solid #e2ebf2;border-radius:14px}
+  .answer-field label{display:block;margin-bottom:7px;color:#344e68;font-size:14px;font-weight:800}
+  .answer-row{display:flex;align-items:center;gap:9px;max-width:540px}
+  .answer-input{width:min(420px,100%);min-height:47px;padding:10px 13px;border:1.5px solid #cad9e7;border-radius:11px;background:#fff;outline:none;color:var(--ink);font-size:17px}
+  .answer-input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(36,118,200,.11)}
+  .unit{color:#4c6278;font-weight:800;white-space:nowrap}
+  .work-area{margin:14px 0 18px}
+  .work-area label{display:block;margin-bottom:6px;color:#6c7e90;font-size:13px;font-weight:700}
+  .work-input{width:100%;min-height:74px;resize:vertical;padding:10px 12px;border:1.5px solid #d5e0e9;border-radius:11px;background:#fff;outline:none;color:var(--ink)}
+  .field-group{margin:16px 0 12px}
+  .field-group-title{margin:0 0 8px;color:#254967;font-size:15px;font-weight:900}
+  .fields-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .feedback{display:none;margin:16px 0 0;padding:13px 15px;border-radius:12px;font-size:14px;font-weight:700}
+  .feedback.show{display:block}
+  .feedback.good{background:var(--green-soft);color:#14683e;border:1px solid #c8e9d2}
+  .feedback.bad{background:var(--red-soft);color:#9f3939;border:1px solid #f1cfcb}
+  .feedback ul{margin:6px 0 0;padding-left:19px;font-weight:600}
+  .answer-key{margin-top:6px;color:#4e6377;font-size:13px;font-weight:600}
+  .game-controls{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:17px;flex-wrap:wrap}
+  .control-left,.control-right{display:flex;gap:9px;flex-wrap:wrap}
+  .control-left .btn,.control-right .btn{min-width:120px}
+  .game-footnote{text-align:center;color:#8291a0;font-size:12px;margin:13px 0 0}
+
+  /* End and review */
+  .result-wrap{max-width:920px;margin:2vh auto 0;overflow:hidden}
+  .result-hero{padding:28px 26px;text-align:center;color:#fff;background:linear-gradient(120deg,#15558f,#227dc1 58%,#159b91)}
+  .result-hero .trophy{font-size:44px;line-height:1.2}
+  .result-hero h2{margin:7px 0 3px;font-size:28px}
+  .result-hero p{margin:0;color:#e6f4ff}
+  .result-body{padding:25px 28px 30px}
+  .score-main{text-align:center;padding:18px 14px 22px;background:#f3f9ff;border:1px solid #dfedfa;border-radius:18px}
+  .score-main .score{font-size:clamp(42px,7vw,64px);font-weight:900;line-height:1.1;color:var(--navy)}
+  .score-main .score-label{color:#60768b;font-weight:700}
+  .result-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0 20px}
+  .result-stat{padding:13px 10px;text-align:center;border:1px solid var(--line);border-radius:13px;background:#fff}
+  .result-stat strong{display:block;color:var(--navy);font-size:23px}
+  .result-stat span{display:block;color:var(--muted);font-size:12px;font-weight:700}
+  .rank{margin:0 0 20px;text-align:center;color:#1d6589;font-size:19px;font-weight:900}
+  .review-toolbar{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin:16px 0}
+  .review-card{margin:12px 0;padding:17px 18px;border:1px solid var(--line);border-radius:15px;background:#fff}
+  .review-card h4{margin:0 0 9px;color:var(--navy);font-size:16px}
+  .review-item{padding:10px 0;border-top:1px solid #edf1f5;font-size:14px}
+  .review-item:first-of-type{border-top:0}
+  .review-status{display:inline-block;margin-left:5px;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:900}
+  .review-status.good{background:var(--green-soft);color:#176d41}
+  .review-status.bad{background:var(--red-soft);color:#9d3939}
+  .review-muted{color:#64788c}
+  .hidden{display:none!important}
+  .notice{font-size:13px;color:#6d7e8f;margin:10px 0 0}
+  @media(max-width:700px){
+    .screen{padding:12px 10px 26px}.start-wrap,.result-wrap{margin:0 auto}.hero{padding:27px 18px 23px}.start-content{padding:22px 18px 24px}.meta-grid,.settings{grid-template-columns:1fr}.game-top{align-items:flex-start;padding:12px;flex-direction:column}.top-stats{justify-content:flex-start}.question-card{padding:20px 16px}.question-content{font-size:16px}.choice-grid,.fields-grid{grid-template-columns:1fr}.choice{min-height:50px}.game-controls{align-items:stretch}.control-left,.control-right{width:100%}.control-left .btn,.control-right .btn{flex:1}.result-body{padding:20px 16px}.result-stats{grid-template-columns:1fr 1fr}.result-stat:last-child{grid-column:span 2}}
+  @media(max-width:420px){.actions .btn{width:100%}.question-heading{align-items:flex-start;flex-direction:column}.stat-pill{font-size:12px;padding:7px 9px}.answer-row{align-items:stretch;flex-direction:column}.answer-input{width:100%}}
+</style>
+</head>
+<body>
+<section id="startScreen" class="screen active">
+  <div class="container">
+    <div class="panel start-wrap">
+      <header class="hero">
+        <div class="hero-mark" aria-hidden="true">📘</div>
+        <h1>KIỂM TRA GIỮA HỌC KÌ 1</h1>
+        <p class="subtitle">MÔN TOÁN</p>
+        <span class="grade-pill">DÀNH CHO HỌC SINH LỚP 5</span>
+      </header>
+      <main class="start-content">
+        <h2 class="section-kicker">THÔNG TIN BÀI KIỂM TRA</h2>
+        <div class="meta-grid">
+          <div class="meta-card"><span>Hình thức</span><strong>Đề lẻ</strong></div>
+          <div class="meta-card"><span>Thời gian làm bài</span><strong>40 phút</strong></div>
+        </div>
+        <label class="field-label" for="studentName">Họ và tên học sinh <span style="color:#c44">*</span></label>
+        <input id="studentName" class="text-input" type="text" maxlength="80" placeholder="Nhập họ và tên của em..." autocomplete="name">
+        <div class="help-list">
+          <h3>📌 HƯỚNG DẪN LÀM BÀI</h3>
+          <ul>
+            <li>Đọc kỹ đề bài và các dữ kiện trước khi trả lời.</li>
+            <li>Với câu trắc nghiệm, chọn một đáp án đúng nhất.</li>
+            <li>Với câu điền khuyết, nhập kết quả vào đúng ô tương ứng.</li>
+            <li>Kiểm tra lại đơn vị đo, phân số và số thập phân.</li>
+            <li>Có thể quay lại câu chưa xác nhận để chỉnh sửa. Sau khi kiểm tra, câu trả lời sẽ được khóa.</li>
+          </ul>
+        </div>
+        <h3 class="section-kicker">TÙY CHỌN BÀI LÀM</h3>
+        <div class="settings">
+          <label class="setting"><input id="shuffleQuestions" type="checkbox" checked> Xáo trộn thứ tự câu hỏi</label>
+          <label class="setting"><input id="shuffleAnswers" type="checkbox" checked> Xáo trộn đáp án A, B, C, D</label>
+          <label class="setting"><input id="soundToggle" type="checkbox"> Bật âm thanh nhẹ</label>
+          <label class="setting"><input id="timerToggle" type="checkbox" checked> Bật đồng hồ 40 phút</label>
+        </div>
+        <p class="source-note"><strong>Lưu ý về tài liệu:</strong> Trò chơi sử dụng đúng 10 câu xuất hiện trong 2 trang PDF đã được cung cấp (trang 1/5 và 2/5). Ba trang còn lại không có trong tệp hiện tại nên không được tự bổ sung câu hỏi.</p>
+        <div class="actions">
+          <button id="startRandomBtn" class="btn btn-primary" type="button">🎮 BẮT ĐẦU LÀM BÀI</button>
+          <button id="startOrderedBtn" class="btn btn-secondary" type="button">📖 LÀM BÀI THEO THỨ TỰ ĐỀ</button>
+        </div>
+        <p class="small-note">Bài làm được xử lý ngay trên thiết bị, không cần Internet và không gửi dữ liệu học sinh lên máy chủ.</p>
+      </main>
+    </div>
+  </div>
+</section>
+
+<section id="gameScreen" class="screen">
+  <div class="game-shell">
+    <header class="panel game-top">
+      <div class="brand">
+        <div class="brand-icon">🧮</div>
+        <div class="brand-title"><strong>KIỂM TRA GIỮA HỌC KÌ 1 - MÔN TOÁN</strong><span id="studentDisplay">Học sinh: — · Lớp 5</span></div>
+      </div>
+      <div class="top-stats">
+        <div id="timerPill" class="stat-pill timer-pill">⏱ Còn lại: <strong id="timerText">40:00</strong></div>
+        <div class="stat-pill">Điểm tạm tính: <strong id="liveScore">0,0/10</strong></div>
+      </div>
+    </header>
+    <div class="panel progress-panel">
+      <div class="progress-row"><span id="progressText">Câu 1/10</span><span id="checkedText">Đã xác nhận: 0/10</span></div>
+      <div class="progress-track"><div id="progressFill" class="progress-fill"></div></div>
+    </div>
+    <main class="panel question-card">
+      <div class="question-heading">
+        <div class="question-number"><span class="number-bubble" id="questionBubble">1</span><span id="questionTitle">Câu 1</span></div>
+        <span id="questionType" class="type-pill">TRẮC NGHIỆM</span>
+      </div>
+      <div id="questionContent" class="question-content"></div>
+      <div id="feedback" class="feedback" role="status" aria-live="polite"></div>
+      <div class="game-controls">
+        <div class="control-left">
+          <button id="prevBtn" class="btn btn-quiet" type="button">← QUAY LẠI</button>
+          <button id="nextBtn" class="btn btn-quiet" type="button">CÂU TIẾP THEO →</button>
+        </div>
+        <div class="control-right">
+          <button id="checkBtn" class="btn btn-primary" type="button">KIỂM TRA ĐÁP ÁN</button>
+          <button id="submitBtn" class="btn btn-danger" type="button">NỘP BÀI</button>
+        </div>
+      </div>
+      <p class="game-footnote">Mỗi câu hỏi gốc tối đa 1 điểm. Điểm tạm tính chỉ cập nhật sau khi xác nhận câu trả lời.</p>
+    </main>
+  </div>
+</section>
+
+<section id="resultScreen" class="screen">
+  <div class="container">
+    <div class="panel result-wrap">
+      <header class="result-hero">
+        <div class="trophy">🏆</div>
+        <h2>KẾT QUẢ BÀI KIỂM TRA</h2>
+        <p id="resultStudent">Học sinh: —</p>
+      </header>
+      <main class="result-body">
+        <div class="score-main">
+          <div id="finalScore" class="score">0,0/10</div>
+          <div class="score-label">ĐIỂM BÀI KIỂM TRA</div>
+        </div>
+        <div class="result-stats">
+          <div class="result-stat"><strong id="answeredQuestions">0/10</strong><span>Câu đã làm</span></div>
+          <div class="result-stat"><strong id="correctItems">0/21</strong><span>Ý/kết quả đúng</span></div>
+          <div class="result-stat"><strong id="wrongItems">0</strong><span>Ý/kết quả sai hoặc bỏ trống</span></div>
+          <div class="result-stat"><strong id="correctRate">0%</strong><span>Tỷ lệ đúng</span></div>
+          <div class="result-stat"><strong id="usedTime">—</strong><span>Thời gian đã sử dụng</span></div>
+          <div class="result-stat"><strong id="confirmedQuestions">0/10</strong><span>Câu đã xác nhận trước khi nộp</span></div>
+        </div>
+        <p id="rankText" class="rank">💪 CÙNG CỐ GẮNG NHÉ!</p>
+        <div class="review-toolbar">
+          <button id="reviewAllBtn" class="btn btn-secondary" type="button">XEM LẠI ĐÁP ÁN</button>
+          <button id="reviewWrongBtn" class="btn btn-quiet" type="button">XEM CÁC CÂU TRẢ LỜI SAI</button>
+          <button id="hideReviewBtn" class="btn btn-quiet hidden" type="button">ẨN PHẦN XEM LẠI</button>
+        </div>
+        <div id="reviewSection" class="hidden" aria-live="polite"></div>
+        <div class="actions" style="margin-top:22px">
+          <button id="restartBtn" class="btn btn-primary" type="button">↻ LÀM BÀI MỚI</button>
+          <button id="homeBtn" class="btn btn-secondary" type="button">⌂ VỀ MÀN HÌNH CHÍNH</button>
+        </div>
+      </main>
+    </div>
+  </div>
+</section>
+
+<script>
+(() => {
+  'use strict';
+
+  const $ = (id) => document.getElementById(id);
+  const fractionHTML = (a, b) => `<span class="fraction" aria-label="${a} phần ${b}"><span class="top">${a}</span><span class="bottom">${b}</span></span>`;
+  const opt = (id, html) => ({ id, html });
+
+  // Nội dung 10 câu được chuyển từ đúng 2 trang PDF người dùng cung cấp.
+  // Đáp án tham chiếu được tính từ dữ kiện toán học, không phải bảng đáp án có sẵn trong PDF.
+  const QUESTIONS = [
+    {
+      id: 1, title: 'Câu 1', type: 'mcq',
+      intro: '<p><em>Khoanh tròn chữ cái đặt trước câu trả lời đúng và làm các bài tập sau:</em></p>',
+      items: [
+        { id: '1a', text: 'a) Kết quả của phép tính 7 200 : 90 là:', options: [opt('A','8'),opt('B','80'),opt('C','800'),opt('D','8 000')], correct: 'B', weight: 0.5, answerText: 'B. 80' },
+        { id: '1b', text: 'b) Giá trị của biểu thức 120 × 4 × 25 là:', options: [opt('A','1 200'),opt('B','480'),opt('C','12 000'),opt('D','120 000')], correct: 'C', weight: 0.5, answerText: 'C. 12 000' }
+      ]
+    },
+    {
+      id: 2, title: 'Câu 2', type: 'mcq',
+      items: [
+        { id: '2a', text: 'a) Số thập phân gồm: 4 chục, 3 đơn vị, 8 phần trăm, 5 phần nghìn là:', options: [opt('A','43,85'),opt('B','438,5'),opt('C','43,085'),opt('D','85,43')], correct: 'C', weight: 0.5, answerText: 'C. 43,085' },
+        { id: '2b', text: `b) Chữ số 7 trong số thập phân 305,978 có giá trị là:`, options: [opt('A','70'),opt('B',`${fractionHTML(7,100)}`),opt('C','7'),opt('D',`${fractionHTML(7,10)}`)], correct: 'B', weight: 0.5, answerText: 'B. 7/100' }
+      ]
+    },
+    {
+      id: 3, title: 'Câu 3', type: 'number',
+      intro: '<p><strong>Câu 3. Tính</strong></p>',
+      items: [
+        { id: '3a', text: `a) ${fractionHTML(2,7)} + ${fractionHTML(3,5)} =`, expected: '31/35', answerText: '31/35', weight: 0.5, unit: '', work: true },
+        { id: '3b', text: `b) ${fractionHTML(7,8)} − ${fractionHTML(2,9)} =`, expected: '47/72', answerText: '47/72', weight: 0.5, unit: '', work: true }
+      ]
+    },
+    {
+      id: 4, title: 'Câu 4', type: 'mcq',
+      items: [
+        { id: '4a', text: 'a) Làm tròn 46,54 đến số tự nhiên gần nhất được kết quả là:', options: [opt('A','46,6'),opt('B','46'),opt('C','47'),opt('D','46,5')], correct: 'C', weight: 0.5, answerText: 'C. 47' },
+        { id: '4b', text: 'b) Làm tròn 8,745 đến hàng phần mười được kết quả là:', options: [opt('A','8,7'),opt('B','8,8'),opt('C','8,75'),opt('D','9,0')], correct: 'A', weight: 0.5, answerText: 'A. 8,7' }
+      ]
+    },
+    {
+      id: 5, title: 'Câu 5', type: 'number',
+      intro: '<p><strong>Câu 5. Tính giá trị của biểu thức:</strong></p>',
+      items: [
+        { id: '5a', text: `a) 6 × ${fractionHTML(7,6)} + ${fractionHTML(4,3)} =`, expected: '25/3', answerText: '25/3 (hay 8 1/3)', weight: 0.5, unit: '', work: true },
+        { id: '5b', text: `b) 3 − ${fractionHTML(1,4)} : ${fractionHTML(7,4)} =`, expected: '20/7', answerText: '20/7 (hay 2 6/7)', weight: 0.5, unit: '', work: true }
+      ]
+    },
+    {
+      id: 6, title: 'Câu 6', type: 'mcq',
+      items: [
+        { id: '6a', text: 'a) Vườn quốc gia Cúc Phương có diện tích khoảng:', options: [opt('A','2,2 km²'),opt('B','22 200 ha'),opt('C','22 200 m²'),opt('D','22 200 dm²')], correct: 'B', weight: 0.5, answerText: 'B. 22 200 ha' },
+        { id: '6b', text: 'b) Một gia đình có khu đất rộng 2 ha. Gia đình sử dụng 16 000 m² để trồng cây ăn quả, phần còn lại để trồng rau. Diện tích đất trồng rau là:', options: [opt('A','20 000 m²'),opt('B','4 000 m²'),opt('C','18 000 m²'),opt('D','16 000 m²')], correct: 'B', weight: 0.5, answerText: 'B. 4 000 m²' }
+      ]
+    },
+    {
+      id: 7, title: 'Câu 7', type: 'number',
+      intro: '<p><strong>Câu 7.</strong> Mai đang gấp con hạc giấy để làm một “lọ ước”. Mục tiêu của Mai là phải gấp được 150 con hạc giấy. Biết rằng, bạn ấy đã gấp được số hạc giấy bằng ' + fractionHTML(4,5) + ' mục tiêu đã đề ra. Tính số hạc giấy mà Mai cần gấp thêm để đạt được mục tiêu.</p>',
+      items: [ { id:'7a', text:'Số hạc giấy Mai cần gấp thêm:', expected:'30', answerText:'30 con hạc giấy', weight:1, unit:'con hạc giấy' } ]
+    },
+    {
+      id: 8, title: 'Câu 8', type: 'number',
+      intro: '<p><strong>Câu 8.</strong> Bốn cây cầu bắc qua sông Hồng có chiều dài là: 3,250 km; 3,084 km; 3,90 km; và 2,290 km. Biết rằng cầu Long Biên ngắn nhất, cầu Nhật Tân dài nhất và cầu Thanh Trì ngắn hơn cầu Thăng Long. Hãy cho biết chiều dài tương ứng của mỗi cây cầu.</p>',
+      items: [
+        { id:'8a', text:'Cầu Long Biên:', expected:'2290/1000', answerText:'2,290 km', weight:0.25, unit:'km' },
+        { id:'8b', text:'Cầu Nhật Tân:', expected:'39/10', answerText:'3,90 km', weight:0.25, unit:'km' },
+        { id:'8c', text:'Cầu Thanh Trì:', expected:'3084/1000', answerText:'3,084 km', weight:0.25, unit:'km' },
+        { id:'8d', text:'Cầu Thăng Long:', expected:'3250/1000', answerText:'3,250 km', weight:0.25, unit:'km' }
+      ]
+    },
+    {
+      id: 9, title: 'Câu 9', type: 'number',
+      intro: '<p><strong>Câu 9.</strong> Trong phong trào trồng cây gây rừng, bản của bạn Dũng trồng được 7 850 cây thông và cây keo. Số cây thông trồng được nhiều hơn số cây keo là 650 cây.</p><p><strong>a)</strong> Tính số cây mỗi loại đã trồng được.</p><p><strong>b)</strong> Biết rằng cứ 10 m² đất đồi trồng được 2 cây. Bản của bạn Dũng dự định phủ xanh một khu đồi có diện tích 40 000 m². Hỏi sau khi trồng hết số cây đã chuẩn bị, bản của bạn Dũng còn phải trồng thêm bao nhiêu cây để phủ xanh toàn bộ khu đồi đó?</p>',
+      items: [
+        { id:'9a', text:'Số cây thông:', expected:'4250', answerText:'4 250 cây', weight:1/3, unit:'cây' },
+        { id:'9b', text:'Số cây keo:', expected:'3600', answerText:'3 600 cây', weight:1/3, unit:'cây' },
+        { id:'9c', text:'Số cây cần trồng thêm:', expected:'150', answerText:'150 cây', weight:1/3, unit:'cây' }
+      ]
+    },
+    {
+      id: 10, title: 'Câu 10', type: 'number',
+      intro: '<p><strong>Câu 10.</strong> Một khu đất hình chữ nhật có chiều dài 600 m, chiều rộng 400 m. Người ta dành 4 ha đất để đào ao nuôi cá, phần diện tích còn lại dùng để trồng trọt. Trong diện tích đất dùng để trồng trọt, người ta dành ' + fractionHTML(3,5) + ' diện tích để trồng ngô, phần còn lại trồng rau. Biết rằng trung bình mỗi héc-ta đất trồng ngô thu hoạch được 5 tấn ngô. Hỏi trên khu đất đó thu hoạch được bao nhiêu tấn ngô?</p>',
+      items: [ { id:'10a', text:'Sản lượng ngô thu hoạch được:', expected:'60', answerText:'60 tấn ngô', weight:1, unit:'tấn ngô' } ]
+    }
+  ];
+
+  const state = {
+    name: '',
+    order: [],
+    current: 0,
+    answers: {},
+    choiceOrders: {},
+    checked: {},
+    timerEnabled: true,
+    soundEnabled: false,
+    startedAt: 0,
+    deadline: 0,
+    timerId: null,
+    finished: false,
+    timeExpired: false,
+    submitted: false,
+    activeReview: false
+  };
+
+  const clone = (value) => JSON.parse(JSON.stringify(value));
+  const shuffle = (arr) => {
+    const a = arr.slice();
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  };
+  const fmtScore = (n) => (Math.round((n + Number.EPSILON) * 10) / 10).toFixed(1).replace('.', ',');
+  const escapeHtml = (s) => String(s).replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+
+  function gcd(a,b){ a=a<0n?-a:a; b=b<0n?-b:b; while(b){const t=a%b;a=b;b=t;} return a||1n; }
+  function rational(n,d){
+    if(d===0n) return null;
+    if(d<0n){n=-n;d=-d;}
+    const g=gcd(n,d); return {n:n/g,d:d/g};
+  }
+  function parseRational(raw){
+    if(raw===null || raw===undefined) return null;
+    let s=String(raw).replace(/\u00a0/g,' ').trim();
+    if(!s) return null;
+    s=s.replace(/(?:con\s+hạc\s+giấy|cây|km|tấn|ha|m²|dm²)\s*$/i,'').trim();
+    // Hỗn số, ví dụ 8 1/3 hoặc 2 6/7.
+    let m=s.match(/^([+-]?\d+)\s+(\d+)\s*\/\s*(\d+)$/);
+    if(m){
+      const whole=BigInt(m[1]), num=BigInt(m[2]), den=BigInt(m[3]);
+      if(den===0n) return null;
+      const sign=whole<0n?-1n:1n;
+      return rational(whole*den + sign*num, den);
+    }
+    // Phân số thông thường.
+    m=s.match(/^([+-]?\d+)\s*\/\s*(\d+)$/);
+    if(m){ const den=BigInt(m[2]); if(den===0n) return null; return rational(BigInt(m[1]),den); }
+    // Số nguyên hoặc thập phân. Khoảng trắng phân nhóm hàng nghìn được bỏ qua.
+    s=s.replace(/\s+/g,'').replace(',', '.');
+    m=s.match(/^([+-]?)(\d+)(?:\.(\d+))?$/);
+    if(!m) return null;
+    const sign=m[1]==='-'?-1n:1n;
+    const decimals=m[3]||'';
+    const den=10n**BigInt(decimals.length);
+    const digits=BigInt(m[2]+decimals);
+    return rational(sign*digits,den);
+  }
+  function equalRational(a,b){ return !!a && !!b && a.n===b.n && a.d===b.d; }
+  function getAnswerValue(item){ return state.answers[item.id]?.value ?? ''; }
+  function getQuestionScore(q){
+    let sum=0;
+    q.items.forEach(item => {
+      if(!state.checked[q.id]) return;
+      const ok = isItemCorrect(item);
+      if(ok) sum += item.weight;
+    });
+    return sum;
+  }
+  function isItemCorrect(item){
+    const value=getAnswerValue(item);
+    if(item.options){ return value===item.correct; }
+    return equalRational(parseRational(value),parseRational(item.expected));
+  }
+  function isItemFilled(item){ return String(getAnswerValue(item)).trim()!==''; }
+  function getTotals(){
+    let score=0, correct=0, total=0, answeredQuestions=0, confirmed=0;
+    QUESTIONS.forEach(q=>{
+      total += q.items.length;
+      const anyFilled=q.items.some(isItemFilled);
+      if(anyFilled) answeredQuestions++;
+      if(state.checked[q.id]){
+        confirmed++;
+        q.items.forEach(item=>{ if(isItemCorrect(item)){score+=item.weight;correct++;} });
+      }
+    });
+    return {score,correct,total,answeredQuestions,confirmed,wrong:total-correct};
+  }
+  function getFinalTotals(){
+    let score=0, correct=0, total=0, answeredQuestions=0, confirmedBefore=0;
+    QUESTIONS.forEach(q=>{
+      total += q.items.length;
+      if(q.items.some(isItemFilled)) answeredQuestions++;
+      if(state.checked[q.id]) confirmedBefore++;
+      q.items.forEach(item=>{if(isItemCorrect(item)){score+=item.weight;correct++;}});
+    });
+    return {score,correct,total,answeredQuestions,confirmedBefore,wrong:total-correct};
+  }
+  function getCurrentQuestion(){ return QUESTIONS[state.order[state.current]]; }
+  function saveValue(itemId,value){
+    if(!state.answers[itemId]) state.answers[itemId]={value:'',work:''};
+    state.answers[itemId].value=value;
+  }
+  function saveWork(itemId,value){
+    if(!state.answers[itemId]) state.answers[itemId]={value:'',work:''};
+    state.answers[itemId].work=value;
+  }
+  function optionOrderFor(item){
+    if(!state.choiceOrders[item.id]) state.choiceOrders[item.id]=item.options.map(o=>o.id);
+    return state.choiceOrders[item.id].map(id=>item.options.find(o=>o.id===id)).filter(Boolean);
+  }
+  function playTone(correct){
+    if(!state.soundEnabled) return;
+    try{
+      const Ctx=window.AudioContext||window.webkitAudioContext;
+      if(!Ctx) return;
+      const ctx=new Ctx(); const osc=ctx.createOscillator(); const gain=ctx.createGain();
+      osc.type='sine'; osc.frequency.value=correct?740:260;
+      gain.gain.setValueAtTime(.0001,ctx.currentTime); gain.gain.exponentialRampToValueAtTime(.07,ctx.currentTime+.02); gain.gain.exponentialRampToValueAtTime(.0001,ctx.currentTime+.18);
+      osc.connect(gain); gain.connect(ctx.destination); osc.start(); osc.stop(ctx.currentTime+.19); osc.onended=()=>ctx.close();
+    }catch(e){ /* Âm thanh là tùy chọn, không ảnh hưởng bài làm. */ }
+  }
+
+  function initializeAnswerState(){
+    state.answers={}; state.checked={}; state.choiceOrders={};
+    QUESTIONS.forEach(q=>q.items.forEach(item=>{
+      state.answers[item.id]={value:'',work:''};
+      if(item.options){
+        const ids=item.options.map(o=>o.id);
+        state.choiceOrders[item.id]=$('shuffleAnswers').checked?shuffle(ids):ids;
+      }
+    }));
+  }
+
+  function startGame(ordered){
+    const name=$('studentName').value.trim();
+    if(!name){ $('studentName').focus(); alert('Em hãy nhập họ và tên trước khi bắt đầu làm bài nhé!'); return; }
+    state.name=name; state.current=0; state.finished=false; state.timeExpired=false; state.submitted=false;
+    state.timerEnabled=$('timerToggle').checked; state.soundEnabled=$('soundToggle').checked;
+    const indexes=QUESTIONS.map((_,i)=>i);
+    state.order=(ordered || !$('shuffleQuestions').checked)?indexes:shuffle(indexes);
+    initializeAnswerState();
+    state.startedAt=Date.now(); state.deadline=state.timerEnabled?state.startedAt+40*60*1000:0;
+    $('studentDisplay').textContent=`Học sinh: ${state.name} · Lớp 5`;
+    showScreen('gameScreen');
+    if(state.timerId){clearInterval(state.timerId);state.timerId=null;}
+    $('timerPill').classList.toggle('hidden',!state.timerEnabled);
+    if(state.timerEnabled){
+      updateTimer(); state.timerId=setInterval(updateTimer,500);
+    }
+    renderQuestion();
+  }
+
+  function showScreen(id){
+    ['startScreen','gameScreen','resultScreen'].forEach(s=>$(s).classList.toggle('active',s===id));
+    window.scrollTo({top:0,behavior:'instant'});
+  }
+
+  function updateTimer(){
+    if(!state.timerEnabled || state.finished) return;
+    const remain=Math.max(0,state.deadline-Date.now());
+    const sec=Math.ceil(remain/1000);
+    const mm=String(Math.floor(sec/60)).padStart(2,'0');
+    const ss=String(sec%60).padStart(2,'0');
+    $('timerText').textContent=`${mm}:${ss}`;
+    $('timerPill').classList.toggle('urgent',remain<=5*60*1000);
+    if(remain<=0){
+      state.timeExpired=true;
+      finishGame(true);
+    }
+  }
+
+  function itemOptionsHTML(item){
+    const order=optionOrderFor(item);
+    const selected=getAnswerValue(item);
+    const locked=!!state.checked[getCurrentQuestion().id] || state.finished;
+    return `<div class="choice-grid">${order.map((o,i)=>{
+      const letter=String.fromCharCode(65+i);
+      let cls='choice';
+      if(selected===o.id) cls+=' selected';
+      if(locked && o.id===item.correct) cls+=' correct';
+      if(locked && selected===o.id && selected!==item.correct) cls+=' incorrect';
+      return `<button type="button" class="${cls}" data-item="${item.id}" data-choice="${o.id}" ${locked?'disabled':''} aria-pressed="${selected===o.id?'true':'false'}"><span class="choice-letter">${letter}</span><span class="choice-text">${o.html}</span></button>`;
+    }).join('')}</div>`;
+  }
+
+  function renderItem(item){
+    if(item.options){
+      return `<div class="subquestion" data-item-block="${item.id}"><div>${item.text}</div>${itemOptionsHTML(item)}</div>`;
+    }
+    const value=escapeHtml(getAnswerValue(item));
+    const work=escapeHtml(state.answers[item.id]?.work||'');
+    const locked=!!state.checked[getCurrentQuestion().id] || state.finished;
+    return `<div class="subquestion" data-item-block="${item.id}">
+      <div>${item.text}</div>
+      <div class="answer-field">
+        <label for="input-${item.id}">Nhập kết quả</label>
+        <div class="answer-row"><input id="input-${item.id}" data-input-item="${item.id}" class="answer-input" type="text" inputmode="decimal" value="${value}" placeholder="Nhập đáp số..." ${locked?'disabled':''}>${item.unit?`<span class="unit">${item.unit}</span>`:''}</div>
+      </div>
+      ${item.work?`<div class="work-area"><label for="work-${item.id}">Trình bày cách làm (không chấm tự động)</label><textarea id="work-${item.id}" data-work-item="${item.id}" class="work-input" placeholder="Em trình bày các bước tính ở đây..." ${locked?'disabled':''}>${work}</textarea></div>`:''}
+    </div>`;
+  }
+
+  function renderFeedback(q){
+    const box=$('feedback');
+    if(!state.checked[q.id]){box.className='feedback';box.innerHTML='';return;}
+    let count=0;
+    q.items.forEach(item=>{if(isItemCorrect(item))count++;});
+    const all=count===q.items.length;
+    const lines=q.items.map(item=>{
+      const ok=isItemCorrect(item);
+      const your=isItemFilled(item)?(item.options?chosenOptionLabel(item,getAnswerValue(item)):escapeHtml(getAnswerValue(item))):'Chưa trả lời';
+      const correctText=item.options?chosenOptionLabel(item,item.correct):item.answerText;
+      return `<li>${item.text.replace(/<[^>]*>/g,' ').replace(/\s+/g,' ').trim()} — ${ok?'Đúng':'Chưa đúng'}; đáp án: <strong>${correctText}</strong>${!ok?` <span class="review-muted">(Em chọn/nhập: ${your})</span>`:''}</li>`;
+    }).join('');
+    box.className=`feedback show ${all?'good':'bad'}`;
+    box.innerHTML=`${all?'CHÍNH XÁC! BẠN GIỎI LẮM!':'CHƯA CHÍNH XÁC! HÃY CỐ GẮNG NHÉ!'} <span>(${count}/${q.items.length} ý đúng)</span><ul>${lines}</ul>`;
+  }
+
+  function chosenOptionLabel(item,id){
+    if(!id) return 'Chưa trả lời';
+    const options=optionOrderFor(item); const index=options.findIndex(o=>o.id===id);
+    const found=item.options.find(o=>o.id===id);
+    return index>=0?`${String.fromCharCode(65+index)}. ${found.html.replace(/<[^>]*>/g,'')}`:'Chưa trả lời';
+  }
+
+  function renderQuestion(){
+    if(state.finished)return;
+    const q=getCurrentQuestion();
+    $('questionBubble').textContent=q.id;
+    $('questionTitle').textContent=q.title;
+    $('questionType').textContent=q.type==='mcq'?'TRẮC NGHIỆM':'ĐIỀN KẾT QUẢ';
+    const body=q.intro?`${q.intro}${q.items.map(renderItem).join('')}`:q.items.map(renderItem).join('');
+    $('questionContent').innerHTML=body;
+    $('prevBtn').disabled=state.current===0;
+    $('nextBtn').disabled=state.current===state.order.length-1;
+    $('checkBtn').disabled=!!state.checked[q.id];
+    $('checkBtn').textContent=state.checked[q.id]?'ĐÃ KIỂM TRA':'KIỂM TRA ĐÁP ÁN';
+    renderFeedback(q);
+    updateProgress();
+    $('questionContent').querySelectorAll('[data-choice]').forEach(btn=>btn.addEventListener('click',()=>{
+      if(state.checked[q.id]||state.finished)return;
+      saveValue(btn.dataset.item,btn.dataset.choice);
+      renderQuestion();
+    }));
+    $('questionContent').querySelectorAll('[data-input-item]').forEach(input=>input.addEventListener('input',()=>saveValue(input.dataset.inputItem,input.value)));
+    $('questionContent').querySelectorAll('[data-work-item]').forEach(input=>input.addEventListener('input',()=>saveWork(input.dataset.workItem,input.value)));
+  }
+
+  function updateProgress(){
+    const q=getCurrentQuestion(); const checked=Object.keys(state.checked).filter(k=>state.checked[k]).length;
+    $('progressText').textContent=`Câu ${state.current+1}/${state.order.length} · ${q.title}`;
+    $('checkedText').textContent=`Đã xác nhận: ${checked}/10`;
+    $('progressFill').style.width=`${checked/10*100}%`;
+    const t=getTotals(); $('liveScore').textContent=`${fmtScore(t.score)}/10`;
+  }
+
+  function checkCurrent(){
+    const q=getCurrentQuestion();
+    if(state.checked[q.id])return;
+    state.checked[q.id]=true;
+    const anyCorrect=q.items.some(isItemCorrect);
+    playTone(q.items.every(isItemCorrect));
+    renderQuestion();
+  }
+
+  function goPrevious(){if(state.current>0){state.current--;renderQuestion();}}
+  function goNext(){if(state.current<state.order.length-1){state.current++;renderQuestion();}}
+
+  function finishGame(expired=false){
+    if(state.finished)return;
+    state.finished=true; state.submitted=true;
+    if(state.timerId){clearInterval(state.timerId);state.timerId=null;}
+    // Lưu số câu đã được học sinh xác nhận trước khi nộp; sau đó chấm các câu còn lại.
+    const confirmedBefore=QUESTIONS.filter(q=>!!state.checked[q.id]).length;
+    // Các câu chưa xác nhận vẫn được chấm khi nộp bài/hết giờ, dựa trên câu trả lời đã lưu.
+    QUESTIONS.forEach(q=>{if(!state.checked[q.id])state.checked[q.id]=true;});
+    const elapsed=Date.now()-state.startedAt;
+    const total=getFinalTotals();
+    total.confirmedBefore=confirmedBefore;
+    $('resultStudent').textContent=`Học sinh: ${state.name} · Lớp 5${expired?' · Đã hết thời gian':''}`;
+    $('finalScore').textContent=`${fmtScore(total.score)}/10`;
+    $('answeredQuestions').textContent=`${total.answeredQuestions}/10`;
+    $('correctItems').textContent=`${total.correct}/${total.total}`;
+    $('wrongItems').textContent=String(total.wrong);
+    $('correctRate').textContent=`${Math.round(total.correct/total.total*100)}%`;
+    $('usedTime').textContent=`${Math.floor(elapsed/60000)}:${String(Math.floor((elapsed%60000)/1000)).padStart(2,'0')}`;
+    $('confirmedQuestions').textContent=`${total.confirmedBefore}/10`;
+    let rank='💪 CÙNG CỐ GẮNG NHÉ!';
+    if(total.score>=9)rank='👑 NHÀ TOÁN HỌC XUẤT SẮC';
+    else if(total.score>=8)rank='🏆 CAO THỦ TOÁN HỌC';
+    else if(total.score>=7)rank='🌟 NGÔI SAO TOÁN HỌC';
+    else if(total.score>=5)rank='⭐ CHIẾN BINH TOÁN HỌC';
+    $('rankText').textContent=rank;
+    $('reviewSection').classList.add('hidden');
+    $('hideReviewBtn').classList.add('hidden');
+    $('reviewAllBtn').classList.remove('hidden'); $('reviewWrongBtn').classList.remove('hidden');
+    showScreen('resultScreen');
+  }
+
+  function itemReviewHTML(q,item){
+    const correct=isItemCorrect(item);
+    let student='Chưa trả lời';
+    if(isItemFilled(item)) student=item.options?chosenOptionLabel(item,getAnswerValue(item)):escapeHtml(getAnswerValue(item));
+    const correctText=item.options?chosenOptionLabel(item,item.correct):item.answerText;
+    return `<div class="review-item">
+      <div>${item.text}</div>
+      <div style="margin-top:5px"><span class="review-muted">Em trả lời:</span> <strong>${student}</strong> <span class="review-status ${correct?'good':'bad'}">${correct?'ĐÚNG':'CHƯA ĐÚNG'}</span></div>
+      <div style="margin-top:3px"><span class="review-muted">Đáp án đúng:</span> <strong>${correctText}</strong></div>
+      ${item.work && state.answers[item.id]?.work?`<div style="margin-top:4px"><span class="review-muted">Cách làm đã trình bày:</span> ${escapeHtml(state.answers[item.id].work)}</div>`:''}
+      <div style="margin-top:4px"><span class="review-muted">Điểm ý này:</span> ${correct?fmtScore(item.weight):'0'} / ${fmtScore(item.weight)}</div>
+    </div>`;
+  }
+  function renderReview(wrongOnly){
+    const container=$('reviewSection');
+    const ordered=state.order.map(index=>QUESTIONS[index]);
+    const selected=ordered.filter(q=>!wrongOnly || q.items.some(item=>!isItemCorrect(item)));
+    if(!selected.length){container.innerHTML='<p class="notice">Rất tốt! Không có câu trả lời sai.</p>';}
+    else{
+      container.innerHTML=selected.map(q=>{
+        const qScore=q.items.reduce((sum,item)=>sum+(isItemCorrect(item)?item.weight:0),0);
+        return `<article class="review-card"><h4>${q.title} <span class="review-muted" style="font-size:13px;font-weight:600">— ${fmtScore(qScore)}/1 điểm</span></h4>${q.intro||''}${q.items.map(item=>itemReviewHTML(q,item)).join('')}</article>`;
+      }).join('');
+    }
+    container.classList.remove('hidden');
+    $('hideReviewBtn').classList.remove('hidden');
+    $('reviewAllBtn').classList.toggle('hidden',!wrongOnly);
+    $('reviewWrongBtn').classList.toggle('hidden',wrongOnly);
+    state.activeReview=true;
+    container.scrollIntoView({behavior:'smooth',block:'start'});
+  }
+
+  function resetToHome(){
+    if(state.timerId){clearInterval(state.timerId);state.timerId=null;}
+    state.finished=false;state.name='';state.answers={};state.checked={};state.order=[];state.current=0;state.submitted=false;
+    $('studentName').value='';
+    showScreen('startScreen');
+  }
+
+  $('startRandomBtn').addEventListener('click',()=>startGame(false));
+  $('startOrderedBtn').addEventListener('click',()=>startGame(true));
+  $('prevBtn').addEventListener('click',goPrevious);
+  $('nextBtn').addEventListener('click',goNext);
+  $('checkBtn').addEventListener('click',checkCurrent);
+  $('submitBtn').addEventListener('click',()=>{
+    const unconfirmed=QUESTIONS.filter(q=>!state.checked[q.id]).length;
+    const empty=QUESTIONS.reduce((n,q)=>n+q.items.filter(item=>!isItemFilled(item)).length,0);
+    const msg=unconfirmed||empty
+      ?`Em còn ${unconfirmed} câu chưa xác nhận và ${empty} ô trả lời đang để trống. Em có chắc chắn muốn nộp bài không?`
+      :'Em đã hoàn thành các câu hỏi. Em có chắc chắn muốn nộp bài không?';
+    if(window.confirm(msg))finishGame(false);
+  });
+  $('reviewAllBtn').addEventListener('click',()=>renderReview(false));
+  $('reviewWrongBtn').addEventListener('click',()=>renderReview(true));
+  $('hideReviewBtn').addEventListener('click',()=>{
+    $('reviewSection').classList.add('hidden');$('hideReviewBtn').classList.add('hidden');
+    $('reviewAllBtn').classList.remove('hidden');$('reviewWrongBtn').classList.remove('hidden');
+  });
+  $('restartBtn').addEventListener('click',()=>{
+    if(!window.confirm('Bắt đầu một bài làm mới? Kết quả hiện tại sẽ được kết thúc.'))return;
+    if(state.timerId){clearInterval(state.timerId);state.timerId=null;}
+    state.finished=false;state.name='';state.answers={};state.checked={};state.order=[];state.current=0;state.submitted=false;
+    $('studentName').value=''; showScreen('startScreen');
+  });
+  $('homeBtn').addEventListener('click',resetToHome);
+  $('studentName').addEventListener('keydown',e=>{if(e.key==='Enter')startGame(false);});
+
+  // Bộ tự kiểm tra tính toán và chuẩn hóa đáp án, chạy kín khi tải trang.
+  function runSelfTests(){
+    const tests=[
+      ['31/35', '62/70', true],
+      ['43,085', '43.085', true],
+      ['4 250', '4250', true],
+      ['8 1/3', '25/3', true],
+      ['2 6/7', '20/7', true],
+      ['3,90', '39/10', true],
+      ['31/35', '32/35', false]
+    ];
+    for(const [a,b,expected] of tests){
+      const actual=equalRational(parseRational(a),parseRational(b));
+      if(actual!==expected) console.error('Lỗi tự kiểm tra bộ phân tích số:',a,b,actual,expected);
+    }
+    const maxScore=QUESTIONS.reduce((sum,q)=>sum+q.items.reduce((s,item)=>s+item.weight,0),0);
+    if(Math.abs(maxScore-10)>1e-9) console.error('Lỗi: tổng điểm tối đa không bằng 10',maxScore);
+    const itemCount=QUESTIONS.reduce((sum,q)=>sum+q.items.length,0);
+    if(itemCount!==21) console.error('Lỗi: số ý chấm điểm không phải 21',itemCount);
+  }
+  runSelfTests();
+})();
+</script>
+</body>
+</html>
