@@ -57,12 +57,18 @@ h1{font-size:clamp(27px,4vw,42px);line-height:1.15;margin:17px 0 8px;font-weight
 .subitem{border:1px solid #e0ebf2;border-radius:15px;padding:17px;margin:14px 0;background:#fcfeff}.subitem-title{font-size:16px;line-height:1.55;font-weight:750;margin-bottom:12px;white-space:pre-line}
 .options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.option{display:flex;align-items:flex-start;gap:11px;text-align:left;width:100%;padding:13px 14px;border:1.5px solid #dbe7ef;border-radius:12px;background:#fff;color:var(--ink);line-height:1.45;min-height:52px}.option:hover{border-color:#8cc5e3;background:#f5fbff}.option.selected{border-color:var(--blue2);background:#eaf6fd;box-shadow:0 0 0 2px rgba(35,137,201,.08)}.option.correct{border-color:#88d1a7;background:var(--green-bg)}.option.wrong{border-color:#f0aaa4;background:var(--red-bg)}
 .option-letter{flex:0 0 27px;width:27px;height:27px;border-radius:8px;display:grid;place-items:center;background:#edf3f7;color:#1769a8;font-weight:850;font-size:13px}.selected .option-letter{background:var(--blue2);color:#fff}
-.answer-row{display:flex;align-items:center;gap:9px;flex-wrap:wrap}.answer-input{width:min(300px,100%);border:1.5px solid #cddfe9;border-radius:11px;padding:12px 13px;outline:none;background:#fff}.answer-input:focus{border-color:var(--blue2);box-shadow:0 0 0 3px rgba(35,137,201,.1)}.unit{font-weight:750;color:#4b6478}.work-label{display:block;color:#6a7f90;font-size:13px;font-weight:700;margin:14px 0 7px}.work-area{width:100%;min-height:67px;border:1px dashed #b9cedc;border-radius:10px;padding:10px 12px;resize:vertical;background:#fff;outline:none}.work-area:focus{border-color:var(--blue2)}
+.answer-row{display:flex;align-items:center;gap:9px;flex-wrap:wrap}.answer-input{width:min(300px,100%);border:1.5px solid #cddfe9;border-radius:11px;padding:12px 13px;outline:none;background:#fff}.answer-input:focus{border-color:var(--blue2);box-shadow:0 0 0 3px rgba(35,137,201,.1)}.unit{font-weight:750;color:#4b6478}
 .feedback{margin-top:12px;padding:12px 14px;border-radius:11px;font-weight:700;font-size:14px;line-height:1.5}.feedback.good{color:#126d43;background:var(--green-bg)}.feedback.bad{color:#a83b36;background:var(--red-bg)}
 .controls{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-top:20px}.controls-left,.controls-right{display:flex;gap:10px;flex-wrap:wrap}.q-dots{display:flex;gap:6px;flex-wrap:wrap;margin-top:17px}.q-dot{width:31px;height:31px;border-radius:9px;border:1px solid #d6e5ee;background:#fff;color:#60788a;font-size:12px;font-weight:800}.q-dot.active{background:#1769a8;color:white;border-color:#1769a8}.q-dot.checked{background:#e6f7ef;color:#137747;border-color:#9dd9b6}
 /* results */
 .result-hero{text-align:center;padding:30px 26px;background:linear-gradient(125deg,#1769aa,#149e9a);color:#fff;border-radius:var(--radius) var(--radius) 0 0}.result-hero h2{margin:10px 0 5px;font-size:30px}.result-hero p{margin:0;color:#e8fbff}.score-big{font-size:56px;font-weight:900;line-height:1.1;margin:16px 0 5px}.result-body{padding:25px 30px}.result-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.result-tile{background:#f5f9fc;border:1px solid #e1ebf1;border-radius:14px;padding:16px;text-align:center}.result-tile strong{display:block;font-size:25px;color:#1769a8}.result-tile span{font-size:12px;color:var(--muted);font-weight:700}.rank{margin:18px 0;padding:14px;border-radius:13px;background:#fff8e3;border:1px solid #f4dfa2;text-align:center;font-size:17px;font-weight:850;color:#795a0a}.review-card{margin-top:14px;border:1px solid var(--line);border-radius:14px;overflow:hidden}.review-head{padding:13px 16px;background:#f2f8fb;font-weight:850;color:#195a88}.review-content{padding:14px 16px;font-size:14px;line-height:1.65}.review-line{padding:8px 0;border-bottom:1px dashed #e2ebf0}.review-line:last-child{border-bottom:0}.state-good{color:var(--green);font-weight:800}.state-bad{color:var(--red);font-weight:800}
 .footer-note{text-align:center;color:#718698;font-size:12px;margin:16px 0}
+/* Hiển thị phân số dạng tử số ở trên, mẫu số ở dưới */
+.fraction{display:inline-flex;flex-direction:column;align-items:stretch;justify-content:center;vertical-align:middle;text-align:center;line-height:1.02;font-size:.92em;margin:0 .12em;white-space:nowrap;font-weight:inherit}
+.fraction-num{display:block;padding:0 .18em .08em;border-bottom:1.4px solid currentColor}
+.fraction-den{display:block;padding:.06em .18em 0}
+.mixed-number{display:inline-flex;align-items:center;vertical-align:middle;white-space:nowrap}
+.whole-number{margin-right:.02em}
 @media(max-width:700px){.shell{width:min(100% - 18px,1080px);margin:10px auto 28px}.hero{padding:27px 22px}.start-card,.quiz-card,.result-body{padding:20px 17px}.option-grid,.options{grid-template-columns:1fr}.status-grid{grid-template-columns:1fr 1fr}.status-grid .stat:last-child{grid-column:1/-1}.topbar{padding:13px 14px}.question-title{font-size:18px}.controls{align-items:stretch}.controls-left,.controls-right{width:100%}.controls .btn{flex:1}.result-grid{grid-template-columns:1fr 1fr}.result-grid .result-tile:last-child{grid-column:1/-1}.score-big{font-size:48px}}
 </style>
 </head>
@@ -164,23 +170,23 @@ const QUESTION_BANK = [
    {id:'2b',label:'b)',prompt:'Chữ số 9 trong số thập phân 305,978 có giá trị là:',kind:'mcq',options:[['A','90'],['B','9/100'],['C','9'],['D','9/10']],correct:'D',answerText:'D. 9/10',weight:.5}
  ]},
  {id:3,title:'Câu 3. Tính',type:'Điền khuyết – Nhập kết quả',items:[
-   {id:'3a',label:'a)',prompt:'2/5 + 6/7 =',kind:'fill',answers:['44/35'],answerText:'44/35 hoặc 1 9/35',unit:'',weight:.5,work:true},
-   {id:'3b',label:'b)',prompt:'5/8 − 2/9 =',kind:'fill',answers:['29/72'],answerText:'29/72',unit:'',weight:.5,work:true}
+   {id:'3a',label:'a)',prompt:'2/5 + 6/7 =',kind:'fill',answers:['44/35'],answerText:'44/35 hoặc 1 9/35',unit:'',weight:.5},
+   {id:'3b',label:'b)',prompt:'5/8 − 2/9 =',kind:'fill',answers:['29/72'],answerText:'29/72',unit:'',weight:.5}
  ]},
  {id:4,title:'Câu 4',type:'Trắc nghiệm – Chọn đáp án đúng nhất',items:[
    {id:'4a',label:'a)',prompt:'Làm tròn 35,56 đến số tự nhiên gần nhất được kết quả là:',kind:'mcq',options:[['A','35,6'],['B','36'],['C','35'],['D','35,5']],correct:'B',answerText:'B. 36',weight:.5},
    {id:'4b',label:'b)',prompt:'Làm tròn 7,645 đến hàng phần mười được kết quả là:',kind:'mcq',options:[['A','7,6'],['B','7,7'],['C','7,65'],['D','8,0']],correct:'A',answerText:'A. 7,6',weight:.5}
  ]},
  {id:5,title:'Câu 5. Tính giá trị của biểu thức:',type:'Điền khuyết – Nhập kết quả',items:[
-   {id:'5a',label:'a)',prompt:'4 × 7/4 + 5/3 =',kind:'fill',answers:['26/3'],answerText:'26/3 hoặc 8 2/3',unit:'',weight:.5,work:true},
-   {id:'5b',label:'b)',prompt:'3 − 3/4 : 5/4 =',kind:'fill',answers:['12/5'],answerText:'12/5 hoặc 2 2/5',unit:'',weight:.5,work:true}
+   {id:'5a',label:'a)',prompt:'4 × 7/4 + 5/3 =',kind:'fill',answers:['26/3'],answerText:'26/3 hoặc 8 2/3',unit:'',weight:.5},
+   {id:'5b',label:'b)',prompt:'3 − 3/4 : 5/4 =',kind:'fill',answers:['12/5'],answerText:'12/5 hoặc 2 2/5',unit:'',weight:.5}
  ]},
  {id:6,title:'Câu 6',type:'Trắc nghiệm – Chọn đáp án đúng nhất',items:[
    {id:'6a',label:'a)',prompt:'Diện tích tỉnh Phú Thọ khoảng:',kind:'mcq',options:[['A','9361 km²'],['B','9361 ha'],['C','9361 m²'],['D','9361 dm²']],correct:'A',answerText:'A. 9361 km²',weight:.5},
    {id:'6b',label:'b)',prompt:'Một gia đình có khu đất rộng 2 ha. Gia đình sử dụng 12 000 m² để trồng cây ăn quả, phần còn lại để trồng rau. Diện tích đất trồng rau là:',kind:'mcq',options:[['A','10 000 m²'],['B','8 000 m²'],['C','12 000 m²'],['D','20 000 m²']],correct:'B',answerText:'B. 8 000 m²',weight:.5}
  ]},
  {id:7,title:'Câu 7',type:'Điền khuyết – Nhập kết quả',description:'Mai đang gấp con hạc giấy để làm một “lọ ước”. Mục tiêu của Mai là phải gấp được 150 con hạc giấy. Biết rằng, bạn ấy đã gấp được số hạc giấy bằng 2/5 mục tiêu đã đề ra. Tính số hạc giấy mà Mai cần gấp thêm để đạt được mục tiêu.',items:[
-   {id:'7a',label:'Đáp số',prompt:'Số hạc giấy Mai cần gấp thêm:',kind:'fill',answers:['90'],answerText:'90 con hạc giấy',unit:'con hạc giấy',weight:1,work:true}
+   {id:'7a',label:'Đáp số',prompt:'Số hạc giấy Mai cần gấp thêm:',kind:'fill',answers:['90'],answerText:'90 con hạc giấy',unit:'con hạc giấy',weight:1}
  ]},
  {id:8,title:'Câu 8',type:'Điền khuyết – Nhập kết quả',description:'Bốn cây cầu bắc qua sông Hồng có chiều dài là: 3,90 km; 2,290 km; 3,084 km và 3,250 km. Biết rằng cầu Nhật Tân dài nhất, cầu Long Biên ngắn nhất và cầu Thăng Long dài hơn cầu Thanh Trì. Hãy cho biết chiều dài tương ứng của mỗi cây cầu.',items:[
    {id:'8longbien',label:'Cầu Long Biên',prompt:'Chiều dài cầu Long Biên:',kind:'fill',answers:['2.290'],answerText:'2,290 km',unit:'km',weight:.25},
@@ -194,7 +200,7 @@ const QUESTION_BANK = [
    {id:'9them',label:'Số cây cần trồng thêm',prompt:'Số cây cần trồng thêm:',kind:'fill',answers:['640'],answerText:'640 cây',unit:'cây',weight:1/3}
  ]},
  {id:10,title:'Câu 10',type:'Điền khuyết – Nhập kết quả',description:'Một khu đất hình chữ nhật có chiều dài 800 m, chiều rộng 500 m. Người ta dành 6 ha đất để đào ao, phần diện tích còn lại dùng để trồng trọt. Trong diện tích đất dùng để trồng trọt, người ta dành 1/4 diện tích để trồng ngô, phần còn lại trồng rau. Biết rằng trung bình mỗi héc-ta đất trồng ngô thu hoạch được 6 tấn ngô. Hỏi trên khu đất đó thu hoạch được bao nhiêu tấn ngô?',items:[
-   {id:'10a',label:'Đáp số',prompt:'Sản lượng ngô thu hoạch được:',kind:'fill',answers:['51'],answerText:'51 tấn ngô',unit:'tấn ngô',weight:1,work:true}
+   {id:'10a',label:'Đáp số',prompt:'Sản lượng ngô thu hoạch được:',kind:'fill',answers:['51'],answerText:'51 tấn ngô',unit:'tấn ngô',weight:1}
  ]}
 ];
 
@@ -203,7 +209,7 @@ let state = {name:'',order:[],index:0,answers:{},checked:{},results:{},optionOrd
 const clone = obj => JSON.parse(JSON.stringify(obj));
 function shuffle(arr){const a=[...arr];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
 function getQ(){return QUESTION_BANK.find(q=>q.id===state.order[state.index]);}
-function getItemState(id){if(!state.answers[id])state.answers[id]={value:'',work:''};return state.answers[id];}
+function getItemState(id){if(!state.answers[id])state.answers[id]={value:''};return state.answers[id];}
 function beep(freq=660,duration=.08){if(!state.sound)return;try{const C=window.AudioContext||window.webkitAudioContext;if(!C)return;const ctx=new C();const o=ctx.createOscillator(),g=ctx.createGain();o.frequency.value=freq;o.connect(g);g.connect(ctx.destination);g.gain.setValueAtTime(.05,ctx.currentTime);g.gain.exponentialRampToValueAtTime(.001,ctx.currentTime+duration);o.start();o.stop(ctx.currentTime+duration);o.onended=()=>ctx.close();}catch(e){}}
 function startQuiz(ordered){
  const name=$('studentName').value.trim();if(!name){alert('Em hãy nhập họ và tên trước khi bắt đầu nhé!');$('studentName').focus();return;}
@@ -215,21 +221,28 @@ function startQuiz(ordered){
 }
 function updateTimer(){const m=Math.floor(state.secondsLeft/60),s=state.secondsLeft%60;$('timerBox').textContent=`⏱ ${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;$('timerBox').classList.toggle('warn',state.secondsLeft<=300);}
 function escapeHtml(str){return String(str).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function formatFractionsHTML(str){
+ let html=escapeHtml(str);
+ // Hỗn số, ví dụ 1 9/35: giữ phần nguyên và xếp phân số theo chiều dọc.
+ html=html.replace(/(\d+)\s+(\d+)\s*\/\s*(\d+)/g,(_,whole,num,den)=>`<span class="mixed-number"><span class="whole-number">${whole}</span><span class="fraction" role="math" aria-label="${whole} và ${num} phần ${den}"><span class="fraction-num">${num}</span><span class="fraction-den">${den}</span></span></span>`);
+ // Phân số thường, ví dụ 2/5, 9/10.
+ html=html.replace(/(\d+)\s*\/\s*(\d+)/g,(_,num,den)=>`<span class="fraction" role="math" aria-label="${num} phần ${den}"><span class="fraction-num">${num}</span><span class="fraction-den">${den}</span></span>`);
+ return html;
+}
 function renderQuestion(){
  if(state.finished)return;const q=getQ();$('currentStat').textContent=`${state.index+1} / 10`;$('questionNumber').textContent=q.title.toUpperCase();$('questionType').textContent=q.type;
- $('questionTitle').textContent=q.description||'';$('questionTitle').classList.toggle('hidden',!q.description);
+ $('questionTitle').innerHTML=formatFractionsHTML(q.description||'');$('questionTitle').classList.toggle('hidden',!q.description);
  const wrap=$('questionContent');wrap.innerHTML='';
  q.items.forEach(item=>{
    const saved=getItemState(item.id);const locked=!!state.checked[q.id];const sub=document.createElement('div');sub.className='subitem';
-   const head=document.createElement('div');head.className='subitem-title';head.textContent=(item.label?item.label+' ':'')+item.prompt;sub.appendChild(head);
+   const head=document.createElement('div');head.className='subitem-title';head.innerHTML=formatFractionsHTML((item.label?item.label+' ':'')+item.prompt);sub.appendChild(head);
    if(item.kind==='mcq'){
      const optWrap=document.createElement('div');optWrap.className='options';let opts=item.options.map(o=>({id:o[0],text:o[1]}));if(!state.optionOrders[item.id])state.optionOrders[item.id]=(state.shuffledAnswers?shuffle(opts):opts).map(o=>o.id);opts=state.optionOrders[item.id].map(id=>{const found=item.options.find(o=>o[0]===id);return {id:found[0],text:found[1]};});
-     opts.forEach((o,i)=>{const b=document.createElement('button');b.type='button';b.className='option'+(saved.value===o.id?' selected':'');b.disabled=locked;b.innerHTML=`<span class="option-letter">${String.fromCharCode(65+i)}</span><span>${escapeHtml(o.text)}</span>`;b.dataset.item=item.id;b.dataset.option=o.id;b.addEventListener('click',()=>{if(state.checked[q.id])return;getItemState(item.id).value=o.id;renderQuestion();});optWrap.appendChild(b);});sub.appendChild(optWrap);
+     opts.forEach((o,i)=>{const b=document.createElement('button');b.type='button';b.className='option'+(saved.value===o.id?' selected':'');b.disabled=locked;b.innerHTML=`<span class="option-letter">${String.fromCharCode(65+i)}</span><span>${formatFractionsHTML(o.text)}</span>`;b.dataset.item=item.id;b.dataset.option=o.id;b.addEventListener('click',()=>{if(state.checked[q.id])return;getItemState(item.id).value=o.id;renderQuestion();});optWrap.appendChild(b);});sub.appendChild(optWrap);
    }else{
-     const row=document.createElement('div');row.className='answer-row';const input=document.createElement('input');input.className='answer-input';input.type='text';input.autocomplete='off';input.placeholder='Nhập đáp số...';input.value=saved.value;input.disabled=locked;input.setAttribute('aria-label',item.label||item.prompt);input.addEventListener('input',e=>{getItemState(item.id).value=e.target.value;});row.appendChild(input);if(item.unit){const u=document.createElement('span');u.className='unit';u.textContent=item.unit;row.appendChild(u);}sub.appendChild(row);
-     if(item.work){const lab=document.createElement('label');lab.className='work-label';lab.textContent='Trình bày cách làm (không chấm tự động):';sub.appendChild(lab);const ta=document.createElement('textarea');ta.className='work-area';ta.placeholder='Em có thể trình bày cách giải ở đây...';ta.value=saved.work;ta.disabled=locked;ta.addEventListener('input',e=>{getItemState(item.id).work=e.target.value;});sub.appendChild(ta);}
+     const row=document.createElement('div');row.className='answer-row';const input=document.createElement('input');input.className='answer-input';input.type='text';input.setAttribute('inputmode','text');input.setAttribute('enterkeyhint','done');input.setAttribute('autocapitalize','off');input.setAttribute('spellcheck','false');input.autocomplete='off';input.placeholder='Nhập đáp số...';input.value=saved.value;input.disabled=locked;input.setAttribute('aria-label',item.label||item.prompt);input.addEventListener('input',e=>{getItemState(item.id).value=e.target.value;});row.appendChild(input);if(item.unit){const u=document.createElement('span');u.className='unit';u.textContent=item.unit;row.appendChild(u);}sub.appendChild(row);
    }
-   if(locked){const r=state.results[item.id];const fb=document.createElement('div');fb.className='feedback '+(r&&r.correct?'good':'bad');fb.textContent=(r&&r.correct?'✓ Chính xác! ':'✗ Chưa chính xác. ')+`Đáp án tham chiếu: ${getItemAnswerText(item)}.`;sub.appendChild(fb);}
+   if(locked){const r=state.results[item.id];const fb=document.createElement('div');fb.className='feedback '+(r&&r.correct?'good':'bad');fb.innerHTML=formatFractionsHTML((r&&r.correct?'✓ Chính xác! ':'✗ Chưa chính xác. ')+`Đáp án tham chiếu: ${getItemAnswerText(item)}.`);sub.appendChild(fb);}
    wrap.appendChild(sub);
  });
  $('questionFeedback').innerHTML='';if(state.checked[q.id]){$('questionFeedback').innerHTML='<div class="feedback good">Câu này đã được xác nhận và khóa. Em có thể xem lại đáp án nhưng không thể sửa câu trả lời.</div>';}
@@ -267,7 +280,7 @@ function finishQuiz(timeout=false){if(state.finished)return;const unanswered=QUE
  let rank=rounded>=9?'👑 NHÀ TOÁN HỌC XUẤT SẮC':rounded>=8?'🏆 CAO THỦ TOÁN HỌC':rounded>=7?'🌟 NGÔI SAO TOÁN HỌC':rounded>=5?'⭐ CHIẾN BINH TOÁN HỌC':'💪 CÙNG CỐ GẮNG NHÉ!';$('rankTitle').textContent=rank;
  renderReview(false);window.scrollTo({top:0,behavior:'smooth'});beep(880,.18);
 }
-function renderReview(onlyWrong){const area=$('reviewArea');area.innerHTML='';QUESTION_BANK.forEach(q=>{const items=q.items.filter(item=>!onlyWrong||!state.results[item.id]?.correct);if(!items.length)return;const card=document.createElement('div');card.className='review-card';const h=document.createElement('div');h.className='review-head';h.textContent=q.title;card.appendChild(h);const content=document.createElement('div');content.className='review-content';if(q.description){const d=document.createElement('div');d.style.whiteSpace='pre-line';d.style.marginBottom='10px';d.textContent=q.description;content.appendChild(d);}items.forEach(item=>{const r=state.results[item.id]||{correct:false,student:''};const line=document.createElement('div');line.className='review-line';const student=item.kind==='mcq'?(item.options.find(o=>o[0]===r.student)?.[1]||'Chưa trả lời'):(String(r.student||'').trim()||'Chưa trả lời');line.innerHTML=`<div><b>${escapeHtml(item.label||'')}</b> ${escapeHtml(item.prompt)}</div><div>Em trả lời: <b>${escapeHtml(student)}</b> — <span class="${r.correct?'state-good':'state-bad'}">${r.correct?'ĐÚNG':'CHƯA ĐÚNG / BỎ TRỐNG'}</span></div><div>Đáp án tham chiếu: <b>${escapeHtml(getItemAnswerText(item))}</b></div><div style="color:#657b8d;font-size:12px">Điểm ý này: ${r.correct?item.weight.toFixed(3).replace(/0+$/,'').replace(/\.$/,''):'0'} / ${item.weight.toFixed(3).replace(/0+$/,'').replace(/\.$/,'')}</div>`;content.appendChild(line);});card.appendChild(content);area.appendChild(card);});if(!area.children.length){area.innerHTML='<div class="feedback good" style="margin-top:18px">🎉 Không có câu trả lời sai. Em đã làm đúng tất cả các ý!</div>';}}
+function renderReview(onlyWrong){const area=$('reviewArea');area.innerHTML='';QUESTION_BANK.forEach(q=>{const items=q.items.filter(item=>!onlyWrong||!state.results[item.id]?.correct);if(!items.length)return;const card=document.createElement('div');card.className='review-card';const h=document.createElement('div');h.className='review-head';h.textContent=q.title;card.appendChild(h);const content=document.createElement('div');content.className='review-content';if(q.description){const d=document.createElement('div');d.style.whiteSpace='pre-line';d.style.marginBottom='10px';d.innerHTML=formatFractionsHTML(q.description);content.appendChild(d);}items.forEach(item=>{const r=state.results[item.id]||{correct:false,student:''};const line=document.createElement('div');line.className='review-line';const student=item.kind==='mcq'?(item.options.find(o=>o[0]===r.student)?.[1]||'Chưa trả lời'):(String(r.student||'').trim()||'Chưa trả lời');line.innerHTML=`<div><b>${formatFractionsHTML(item.label||'')}</b> ${formatFractionsHTML(item.prompt)}</div><div>Em trả lời: <b>${formatFractionsHTML(student)}</b> — <span class="${r.correct?'state-good':'state-bad'}">${r.correct?'ĐÚNG':'CHƯA ĐÚNG / BỎ TRỐNG'}</span></div><div>Đáp án tham chiếu: <b>${formatFractionsHTML(getItemAnswerText(item))}</b></div><div style="color:#657b8d;font-size:12px">Điểm ý này: ${r.correct?item.weight.toFixed(3).replace(/0+$/,'').replace(/\.$/,''):'0'} / ${item.weight.toFixed(3).replace(/0+$/,'').replace(/\.$/,'')}</div>`;content.appendChild(line);});card.appendChild(content);area.appendChild(card);});if(!area.children.length){area.innerHTML='<div class="feedback good" style="margin-top:18px">🎉 Không có câu trả lời sai. Em đã làm đúng tất cả các ý!</div>';}}
 
 $('startRandom').addEventListener('click',()=>startQuiz(false));$('startOrdered').addEventListener('click',()=>startQuiz(true));$('checkBtn').addEventListener('click',checkCurrent);$('prevBtn').addEventListener('click',goPrev);$('nextBtn').addEventListener('click',goNext);$('submitBtn').addEventListener('click',()=>finishQuiz(false));$('showAllReview').addEventListener('click',()=>renderReview(false));$('showWrongReview').addEventListener('click',()=>renderReview(true));$('restartBtn').addEventListener('click',()=>{if(state.timerHandle)clearInterval(state.timerHandle);state.finished=true;$('resultScreen').classList.add('hidden');$('quizScreen').classList.add('hidden');$('startScreen').classList.remove('hidden');$('studentName').value='';window.scrollTo({top:0,behavior:'smooth'});});
 // Prevent accidental browser navigation during an active timed test; no answer data is uploaded.
