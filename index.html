@@ -50,7 +50,7 @@
   .meta-card strong{display:block;margin-top:3px;color:var(--navy);font-size:17px}
   .field-label{display:block;margin:0 0 7px;font-size:14px;font-weight:800;color:#334b63}
   .text-input{width:100%;min-height:48px;padding:11px 14px;border:1.5px solid #cbd9e6;border-radius:12px;background:#fff;color:var(--ink);outline:none;transition:border-color .18s,box-shadow .18s}
-  .text-input:focus,.work-input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(36,118,200,.12)}
+  .text-input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(36,118,200,.12)}
   .help-list{margin:20px 0 22px;padding:16px 18px;background:var(--blue-soft);border-radius:15px;border:1px solid #d7e9fa}
   .help-list h3{margin:0 0 7px;color:var(--navy);font-size:15px}
   .help-list ul{margin:0;padding-left:20px;color:#435d77;font-size:14px}
@@ -88,6 +88,21 @@
   .progress-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:9px;font-size:13px;color:var(--muted);font-weight:700}
   .progress-track{height:9px;background:#e9f0f6;border-radius:999px;overflow:hidden}
   .progress-fill{height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--teal));border-radius:999px;transition:width .25s}
+  .question-nav-panel{padding:14px 18px;margin-bottom:14px}
+  .question-nav-heading{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:11px}
+  .question-nav-heading strong{color:var(--navy);font-size:14px;font-weight:900}
+  .question-nav-heading span{color:var(--muted);font-size:12px}
+  .question-nav-grid{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:8px}
+  .question-nav-btn{min-height:42px;border:1.5px solid #d7e3ed;border-radius:10px;background:#fff;color:#40566c;font-weight:900;font-size:14px;transition:background .15s,border-color .15s,box-shadow .15s}
+  .question-nav-btn:hover{border-color:#8bb9e3;background:#f4f9ff}
+  .question-nav-btn.has-answer{background:var(--blue-soft);border-color:#a9cdec;color:#1764aa}
+  .question-nav-btn.is-checked{background:var(--green-soft);border-color:#91d2a8;color:#14683e}
+  .question-nav-btn.is-current{outline:3px solid rgba(36,118,200,.16);border-color:var(--blue);box-shadow:0 0 0 1px var(--blue)}
+  .question-nav-legend{display:flex;flex-wrap:wrap;gap:13px;margin-top:11px;color:var(--muted);font-size:11px}
+  .question-nav-legend span{display:inline-flex;align-items:center;gap:5px}
+  .legend-dot{width:9px;height:9px;border-radius:3px;border:1px solid #d7e3ed;background:#fff;display:inline-block}
+  .legend-dot.answered{background:var(--blue-soft);border-color:#a9cdec}
+  .legend-dot.checked{background:var(--green-soft);border-color:#91d2a8}
   .question-card{padding:26px 28px 24px;min-height:390px}
   .question-heading{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:17px}
   .question-number{display:flex;align-items:center;gap:10px;color:var(--navy);font-size:20px;font-weight:900}
@@ -119,9 +134,6 @@
   .answer-input{width:min(420px,100%);min-height:47px;padding:10px 13px;border:1.5px solid #cad9e7;border-radius:11px;background:#fff;outline:none;color:var(--ink);font-size:17px}
   .answer-input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(36,118,200,.11)}
   .unit{color:#4c6278;font-weight:800;white-space:nowrap}
-  .work-area{margin:14px 0 18px}
-  .work-area label{display:block;margin-bottom:6px;color:#6c7e90;font-size:13px;font-weight:700}
-  .work-input{width:100%;min-height:74px;resize:vertical;padding:10px 12px;border:1.5px solid #d5e0e9;border-radius:11px;background:#fff;outline:none;color:var(--ink)}
   .field-group{margin:16px 0 12px}
   .field-group-title{margin:0 0 8px;color:#254967;font-size:15px;font-weight:900}
   .fields-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
@@ -163,7 +175,7 @@
   .hidden{display:none!important}
   .notice{font-size:13px;color:#6d7e8f;margin:10px 0 0}
   @media(max-width:700px){
-    .screen{padding:12px 10px 26px}.start-wrap,.result-wrap{margin:0 auto}.hero{padding:27px 18px 23px}.start-content{padding:22px 18px 24px}.meta-grid,.settings{grid-template-columns:1fr}.game-top{align-items:flex-start;padding:12px;flex-direction:column}.top-stats{justify-content:flex-start}.question-card{padding:20px 16px}.question-content{font-size:16px}.choice-grid,.fields-grid{grid-template-columns:1fr}.choice{min-height:50px}.game-controls{align-items:stretch}.control-left,.control-right{width:100%}.control-left .btn,.control-right .btn{flex:1}.result-body{padding:20px 16px}.result-stats{grid-template-columns:1fr 1fr}.result-stat:last-child{grid-column:span 2}}
+    .screen{padding:12px 10px 26px}.start-wrap,.result-wrap{margin:0 auto}.hero{padding:27px 18px 23px}.start-content{padding:22px 18px 24px}.meta-grid,.settings{grid-template-columns:1fr}.game-top{align-items:flex-start;padding:12px;flex-direction:column}.top-stats{justify-content:flex-start}.question-card{padding:20px 16px}.question-content{font-size:16px}.choice-grid,.fields-grid{grid-template-columns:1fr}.choice{min-height:50px}.game-controls{align-items:stretch}.control-left,.control-right{width:100%}.control-left .btn,.control-right .btn{flex:1}.result-body{padding:20px 16px}.result-stats{grid-template-columns:1fr 1fr}.result-stat:last-child{grid-column:span 2}.question-nav-grid{grid-template-columns:repeat(5,minmax(0,1fr));gap:7px}.question-nav-panel{padding:13px 12px}.question-nav-heading{align-items:flex-start;flex-direction:column;gap:2px}}
   @media(max-width:420px){.actions .btn{width:100%}.question-heading{align-items:flex-start;flex-direction:column}.stat-pill{font-size:12px;padding:7px 9px}.answer-row{align-items:stretch;flex-direction:column}.answer-input{width:100%}}
 </style>
 </head>
@@ -229,6 +241,18 @@
       <div class="progress-row"><span id="progressText">Câu 1/10</span><span id="checkedText">Đã xác nhận: 0/10</span></div>
       <div class="progress-track"><div id="progressFill" class="progress-fill"></div></div>
     </div>
+    <nav class="panel question-nav-panel" aria-label="Chọn câu hỏi">
+      <div class="question-nav-heading">
+        <strong>📚 CHỌN CÂU HỎI</strong>
+        <span>Nhấn vào số câu muốn làm. Em có thể chuyển câu bất cứ lúc nào.</span>
+      </div>
+      <div id="questionNavGrid" class="question-nav-grid"></div>
+      <div class="question-nav-legend" aria-label="Chú thích trạng thái câu hỏi">
+        <span><i class="legend-dot"></i> Chưa trả lời</span>
+        <span><i class="legend-dot answered"></i> Đã nhập câu trả lời</span>
+        <span><i class="legend-dot checked"></i> Đã kiểm tra</span>
+      </div>
+    </nav>
     <main class="panel question-card">
       <div class="question-heading">
         <div class="question-number"><span class="number-bubble" id="questionBubble">1</span><span id="questionTitle">Câu 1</span></div>
@@ -318,8 +342,8 @@
       id: 3, title: 'Câu 3', type: 'number',
       intro: '<p><strong>Câu 3. Tính</strong></p>',
       items: [
-        { id: '3a', text: `a) ${fractionHTML(2,7)} + ${fractionHTML(3,5)} =`, expected: '31/35', answerText: '31/35', weight: 0.5, unit: '', work: true },
-        { id: '3b', text: `b) ${fractionHTML(7,8)} − ${fractionHTML(2,9)} =`, expected: '47/72', answerText: '47/72', weight: 0.5, unit: '', work: true }
+        { id: '3a', text: `a) ${fractionHTML(2,7)} + ${fractionHTML(3,5)} =`, expected: '31/35', answerText: '31/35', weight: 0.5, unit: '' },
+        { id: '3b', text: `b) ${fractionHTML(7,8)} − ${fractionHTML(2,9)} =`, expected: '47/72', answerText: '47/72', weight: 0.5, unit: '' }
       ]
     },
     {
@@ -333,8 +357,8 @@
       id: 5, title: 'Câu 5', type: 'number',
       intro: '<p><strong>Câu 5. Tính giá trị của biểu thức:</strong></p>',
       items: [
-        { id: '5a', text: `a) 6 × ${fractionHTML(7,6)} + ${fractionHTML(4,3)} =`, expected: '25/3', answerText: '25/3 (hay 8 1/3)', weight: 0.5, unit: '', work: true },
-        { id: '5b', text: `b) 3 − ${fractionHTML(1,4)} : ${fractionHTML(7,4)} =`, expected: '20/7', answerText: '20/7 (hay 2 6/7)', weight: 0.5, unit: '', work: true }
+        { id: '5a', text: `a) 6 × ${fractionHTML(7,6)} + ${fractionHTML(4,3)} =`, expected: '25/3', answerText: '25/3 (hay 8 1/3)', weight: 0.5, unit: '' },
+        { id: '5b', text: `b) 3 − ${fractionHTML(1,4)} : ${fractionHTML(7,4)} =`, expected: '20/7', answerText: '20/7 (hay 2 6/7)', weight: 0.5, unit: '' }
       ]
     },
     {
@@ -479,12 +503,8 @@
   }
   function getCurrentQuestion(){ return QUESTIONS[state.order[state.current]]; }
   function saveValue(itemId,value){
-    if(!state.answers[itemId]) state.answers[itemId]={value:'',work:''};
+    if(!state.answers[itemId]) state.answers[itemId]={value:''};
     state.answers[itemId].value=value;
-  }
-  function saveWork(itemId,value){
-    if(!state.answers[itemId]) state.answers[itemId]={value:'',work:''};
-    state.answers[itemId].work=value;
   }
   function optionOrderFor(item){
     if(!state.choiceOrders[item.id]) state.choiceOrders[item.id]=item.options.map(o=>o.id);
@@ -505,7 +525,7 @@
   function initializeAnswerState(){
     state.answers={}; state.checked={}; state.choiceOrders={};
     QUESTIONS.forEach(q=>q.items.forEach(item=>{
-      state.answers[item.id]={value:'',work:''};
+      state.answers[item.id]={value:''};
       if(item.options){
         const ids=item.options.map(o=>o.id);
         state.choiceOrders[item.id]=$('shuffleAnswers').checked?shuffle(ids):ids;
@@ -570,15 +590,13 @@
       return `<div class="subquestion" data-item-block="${item.id}"><div>${item.text}</div>${itemOptionsHTML(item)}</div>`;
     }
     const value=escapeHtml(getAnswerValue(item));
-    const work=escapeHtml(state.answers[item.id]?.work||'');
     const locked=!!state.checked[getCurrentQuestion().id] || state.finished;
     return `<div class="subquestion" data-item-block="${item.id}">
       <div>${item.text}</div>
       <div class="answer-field">
         <label for="input-${item.id}">Nhập kết quả</label>
-        <div class="answer-row"><input id="input-${item.id}" data-input-item="${item.id}" class="answer-input" type="text" inputmode="decimal" value="${value}" placeholder="Nhập đáp số..." ${locked?'disabled':''}>${item.unit?`<span class="unit">${item.unit}</span>`:''}</div>
+        <div class="answer-row"><input id="input-${item.id}" data-input-item="${item.id}" class="answer-input" type="text" inputmode="text" autocapitalize="off" autocomplete="off" spellcheck="false" enterkeyhint="done" value="${value}" placeholder="Nhập đáp số..." ${locked?'disabled':''}>${item.unit?`<span class="unit">${item.unit}</span>`:''}</div>
       </div>
-      ${item.work?`<div class="work-area"><label for="work-${item.id}">Trình bày cách làm (không chấm tự động)</label><textarea id="work-${item.id}" data-work-item="${item.id}" class="work-input" placeholder="Em trình bày các bước tính ở đây..." ${locked?'disabled':''}>${work}</textarea></div>`:''}
     </div>`;
   }
 
@@ -605,6 +623,31 @@
     return index>=0?`${String.fromCharCode(65+index)}. ${found.html.replace(/<[^>]*>/g,'')}`:'Chưa trả lời';
   }
 
+  function renderQuestionNav(){
+    const grid=$('questionNavGrid');
+    if(!grid) return;
+    grid.innerHTML=QUESTIONS.map((q,questionIndex)=>{
+      const orderIndex=state.order.indexOf(questionIndex);
+      const hasAnswer=q.items.some(isItemFilled);
+      const checked=!!state.checked[q.id];
+      const current=orderIndex===state.current;
+      const classes=['question-nav-btn'];
+      if(hasAnswer) classes.push('has-answer');
+      if(checked) classes.push('is-checked');
+      if(current) classes.push('is-current');
+      const status=checked?'Đã kiểm tra':hasAnswer?'Đã nhập câu trả lời':'Chưa trả lời';
+      return `<button type="button" class="${classes.join(' ')}" data-question-index="${orderIndex}" ${current?'aria-current="true"':''} aria-label="Câu ${q.id}: ${status}">${q.id}</button>`;
+    }).join('');
+    grid.querySelectorAll('[data-question-index]').forEach(btn=>btn.addEventListener('click',()=>{
+      const target=Number(btn.dataset.questionIndex);
+      if(!Number.isInteger(target)||target<0||target>=state.order.length||state.finished)return;
+      state.current=target;
+      renderQuestion();
+      const card=document.querySelector('.question-card');
+      if(card) card.scrollIntoView({behavior:'smooth',block:'start'});
+    }));
+  }
+
   function renderQuestion(){
     if(state.finished)return;
     const q=getCurrentQuestion();
@@ -619,13 +662,16 @@
     $('checkBtn').textContent=state.checked[q.id]?'ĐÃ KIỂM TRA':'KIỂM TRA ĐÁP ÁN';
     renderFeedback(q);
     updateProgress();
+    renderQuestionNav();
     $('questionContent').querySelectorAll('[data-choice]').forEach(btn=>btn.addEventListener('click',()=>{
       if(state.checked[q.id]||state.finished)return;
       saveValue(btn.dataset.item,btn.dataset.choice);
       renderQuestion();
     }));
-    $('questionContent').querySelectorAll('[data-input-item]').forEach(input=>input.addEventListener('input',()=>saveValue(input.dataset.inputItem,input.value)));
-    $('questionContent').querySelectorAll('[data-work-item]').forEach(input=>input.addEventListener('input',()=>saveWork(input.dataset.workItem,input.value)));
+    $('questionContent').querySelectorAll('[data-input-item]').forEach(input=>input.addEventListener('input',()=>{
+      saveValue(input.dataset.inputItem,input.value);
+      renderQuestionNav();
+    }));
   }
 
   function updateProgress(){
@@ -688,7 +734,6 @@
       <div>${item.text}</div>
       <div style="margin-top:5px"><span class="review-muted">Em trả lời:</span> <strong>${student}</strong> <span class="review-status ${correct?'good':'bad'}">${correct?'ĐÚNG':'CHƯA ĐÚNG'}</span></div>
       <div style="margin-top:3px"><span class="review-muted">Đáp án đúng:</span> <strong>${correctText}</strong></div>
-      ${item.work && state.answers[item.id]?.work?`<div style="margin-top:4px"><span class="review-muted">Cách làm đã trình bày:</span> ${escapeHtml(state.answers[item.id].work)}</div>`:''}
       <div style="margin-top:4px"><span class="review-muted">Điểm ý này:</span> ${correct?fmtScore(item.weight):'0'} / ${fmtScore(item.weight)}</div>
     </div>`;
   }
